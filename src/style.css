@@ -1,0 +1,66 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body
+{
+    overflow: hidden;
+}
+
+.experience
+{
+    position: fixed;
+    width: 50vw;
+    height: 80vh;
+}
+
+.point {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+/* .point.visible {
+    transform: scale(1); 
+} */
+
+.point .label {
+    margin-bottom: 20px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(243, 35, 35, 0.671);
+    color: #ffffff;
+    font-family: Helvetica, sans-serif;
+    text-align: center;
+    font-size: 14px;
+    line-height: 40px;
+    font-weight: 100;
+    cursor: help;
+}
+
+.point .text {
+    padding: 20px;
+    width: 270px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    border-radius: 10px;
+    line-height: 13px;
+    font-family: Helvetica, sans-serif;
+    font-weight: 100;
+    font-size: 14px;
+    text-align: center;
+    pointer-events: none;
+}
+
+.point:hover .text {
+    opacity: 1;
+}
