@@ -11,13 +11,13 @@ export default class Sizes extends EventEmitter
 
         // Viewport size
         this.viewport = {}
-        this.$sizeViewport = document.createElement('div')
-        this.$sizeViewport.style.width = '50vw'
-        this.$sizeViewport.style.height = '80vh'
-        this.$sizeViewport.style.position = 'absolute'
-        this.$sizeViewport.style.top = 0
-        this.$sizeViewport.style.left = 0
-        this.$sizeViewport.style.pointerEvents = 'none'
+        this.sizeViewport = document.createElement('div')
+        this.sizeViewport.style.width = '60vw'
+        this.sizeViewport.style.height = '100vh'
+        // this.sizeViewport.style.position = 'absolute'
+        // this.sizeViewport.style.top = 0
+        // this.sizeViewport.style.left = 0
+        this.sizeViewport.style.pointerEvents = 'none'
 
         // Resize event
         this.resize = this.resize.bind(this)
@@ -31,14 +31,23 @@ export default class Sizes extends EventEmitter
      */
     resize()
     {
-        document.body.appendChild(this.$sizeViewport)
-        this.viewport.width = this.$sizeViewport.offsetWidth
-        this.viewport.height = this.$sizeViewport.offsetHeight
-        document.body.removeChild(this.$sizeViewport)
+        document.body.appendChild(this.sizeViewport)
+        this.viewport.width = this.sizeViewport.clientWidth
+        this.viewport.height = this.sizeViewport.clientHeight
+        document.body.removeChild(this.sizeViewport)
 
         this.width = window.innerWidth
         this.height = window.innerHeight
 
         this.trigger('resize')
     }
+
+    update()
+    {
+        document.body.appendChild(this.sizeViewport)
+        this.viewport.width = this.sizeViewport.clientWidth
+        this.viewport.height = this.sizeViewport.clientHeight
+        document.body.removeChild(this.sizeViewport)
+    }
+
 }

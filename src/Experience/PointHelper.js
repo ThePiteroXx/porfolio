@@ -1,5 +1,4 @@
 import * as THREE from 'three'
-import { gsap } from 'gsap'
 import Experience from './Experience.js'
 import World from './World.js'
 
@@ -21,14 +20,6 @@ export default class PointHelper
         this.scale = 0
 
         this.createPoint()
-
-        if(this.debug)
-        {
-           this.debugFolder = this.debug.addFolder({
-              title: 'pointer',
-              expanded: true
-           })
-        }
     }
 
     createPoint() 
@@ -40,11 +31,13 @@ export default class PointHelper
         <div class="label"></div>
         <div class="text">${this.text}</div>
         `
-        
-        window.setTimeout(() => {
-            document.body.appendChild(this.point)
-            this.visiblePoint = true
-        }, 200)
+        const container = document.querySelector('.container-points')
+        // window.setTimeout(() => {
+        //     document.body.appendChild(this.point)
+        //     this.visiblePoint = true
+        // }, 200)
+        if(this.visiblePoint)
+            container.appendChild(this.point)
 
     }
 
@@ -58,6 +51,7 @@ export default class PointHelper
     {
         const screenPosition = this.position.clone()
         screenPosition.project(this.camera.modes.default.instance)
+        
 
         const translateX = screenPosition.x * this.width * 0.5
         const translateY = - screenPosition.y * this.height * 0.5

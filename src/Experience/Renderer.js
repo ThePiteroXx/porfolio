@@ -19,7 +19,6 @@ export default class Renderer
         this.usePostprocess = false
 
         this.setInstance()
-        this.setPostProcess()
     }
 
     setInstance()
@@ -28,14 +27,10 @@ export default class Renderer
 
         // Renderer
         this.instance = new THREE.WebGLRenderer({
+            canvas: this.experience.targetElement,
             alpha: false,
             antialias: true
         })
-        this.instance.domElement.style.position = 'absolute'
-        this.instance.domElement.style.top = 0
-        this.instance.domElement.style.left = 0
-        this.instance.domElement.style.width = '100%'
-        this.instance.domElement.style.height = '100%'
 
         // this.instance.setClearColor(0x414141, 1)
         this.instance.setClearColor(this.clearColor, 1)
@@ -59,47 +54,12 @@ export default class Renderer
         }
     }
 
-    setPostProcess()
-    {
-        this.postProcess = {}
-
-        /**
-         * Render pass
-         */
-        this.postProcess.renderPass = new RenderPass(this.scene, this.camera.instance)
-
-        /**
-         * Effect composer
-         */
-        const RenderTargetClass = this.config.pixelRatio >= 2 ? THREE.WebGLRenderTarget : THREE.WebGLMultisampleRenderTarget
-        // const RenderTargetClass = THREE.WebGLRenderTarget
-        this.renderTarget = new RenderTargetClass(
-            this.config.width,
-            this.config.height,
-            {
-                generateMipmaps: false,
-                minFilter: THREE.LinearFilter,
-                magFilter: THREE.LinearFilter,
-                format: THREE.RGBFormat,
-                encoding: THREE.sRGBEncoding
-            }
-        )
-        this.postProcess.composer = new EffectComposer(this.instance, this.renderTarget)
-        this.postProcess.composer.setSize(this.config.width, this.config.height)
-        this.postProcess.composer.setPixelRatio(this.config.pixelRatio)
-
-        this.postProcess.composer.addPass(this.postProcess.renderPass)
-    }
 
     resize()
     {
         // Instance
         this.instance.setSize(this.config.width, this.config.height)
         this.instance.setPixelRatio(this.config.pixelRatio)
-
-        // Post process
-        this.postProcess.composer.setSize(this.config.width, this.config.height)
-        this.postProcess.composer.setPixelRatio(this.config.pixelRatio)
     }
 
     update()

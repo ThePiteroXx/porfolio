@@ -102,8 +102,9 @@ export default class Baked
         this.mouse = new THREE.Vector2()
 
         this.targetElement.addEventListener('mousemove', (event) => {
-           this.mouse.x =  event.clientX / this.width * 2 - 1
-            this.mouse.y = - (event.clientY / this.height) * 2 + 1
+            const rect = event.target.getBoundingClientRect()
+            this.mouse.x =  (event.clientX - rect.left) / this.width * 2 - 1
+            this.mouse.y = - ((event.clientY - rect.top) / this.height) * 2 + 1
         })
     }
 
@@ -120,13 +121,13 @@ export default class Baked
 
                     if(this.targetElement.classList.contains('clickLamp'))
                     {
-                    const pointLamp = document.querySelector('.point')
                     this.model.material.uniforms.uChangeBaked.value = true
                     this.model.lampL.material.color = this.model.lampLcolorOn
                     this.experience.point1.visiblePoint = false
 
                     return
                     }
+                    this.experience.point1.visiblePoint = false
                     this.model.material.uniforms.uChangeBaked.value = false 
                     this.model.lampL.material.color = this.model.lampLcolorOff
                 }

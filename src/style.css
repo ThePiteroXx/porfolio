@@ -7,15 +7,17 @@
 
 html,
 body
-{
+{ 
+    background-color: #000;
     overflow: hidden;
 }
 
-.experience
-{
-    position: fixed;
-    width: 50vw;
-    height: 80vh;
+.left {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
 }
 
 .point {
@@ -27,10 +29,6 @@ body
     top: 50%;
     left: 50%;
 }
-
-/* .point.visible {
-    transform: scale(1); 
-} */
 
 .point .label {
     margin-bottom: 20px;
@@ -44,7 +42,6 @@ body
     font-size: 14px;
     line-height: 40px;
     font-weight: 100;
-    cursor: help;
 }
 
 .point .text {
@@ -58,9 +55,59 @@ body
     font-weight: 100;
     font-size: 14px;
     text-align: center;
+}
+
+.container-points {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80vw;
+    height: 100vh;
+    overflow: hidden;
     pointer-events: none;
 }
 
-.point:hover .text {
-    opacity: 1;
+.container-points .btn-exit {
+    position: absolute;
+    top: 40px;
+    left: 70px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    pointer-events: auto;
+    transform: scale(0);
+    transition: transform .4s;
 }
+
+.container-points .btn-exit.visible {
+    transform: scale(1);
+}
+
+.container-points .bars {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-points .bar {
+    position: absolute;
+    width: 25px;
+    height: 5px;
+    background-color: #000;
+    border-radius: 4px;
+}
+
+.container-points .bar-1 {
+    transform: rotate(45deg);
+}
+
+.container-points .bar-2 {
+    transform: rotate(-45deg); 
+}
+
+
+
+
