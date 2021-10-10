@@ -49,6 +49,7 @@ export default class Experience
         this.setPoints()
         this.clickTarget()
         this.addBasic()
+        this.loadScreen()
         
         this.sizes.on('resize', () =>
         {
@@ -163,6 +164,8 @@ export default class Experience
     {
         this.selectors = {}
         this.selectors.btnExit = document.querySelector('.btn-exit')
+        this.selectors.loaderProgress = document.querySelector('.loader-strip-progress')
+        this.selectors.screenLoad = document.querySelector('.loader')
 
         
         this.selectors.btnExit.addEventListener('click', () => {
@@ -180,6 +183,23 @@ export default class Experience
 
             }, duration * 1100)
 
+        })
+    }
+
+    loadScreen()
+    {
+
+        this.resources.on('progress', (_progress) =>
+        {
+            const progress = _progress.loaded / _progress.toLoad
+            this.selectors.loaderProgress.style.transform = `scaleX(${progress})`
+
+            if(progress === 1)
+            {
+                gsap.fromTo(this.selectors.screenLoad, {x: 0}, {x: '100%', ease: 'power3.in' ,duration: 0.6})
+
+            }
+            
         })
     }
 
