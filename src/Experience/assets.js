@@ -14,7 +14,7 @@ export default [
             { name: 'laptopMonitor', source: '/assets/laptopMonitor.glb', type: 'model'},
             { name: 'leftMonitor', source: '/assets/leftMonitor.glb', type: 'model'},
             { name: 'coffeSteam', source: '/assets/coffeSteam.glb', type: 'model'},
-            { name: 'painting', source: '/assets/painting.glb', type: 'model'},
+            { name: 'painting', source: '/assets/painting.glb', type: 'model'}
         ]
     }
 ]

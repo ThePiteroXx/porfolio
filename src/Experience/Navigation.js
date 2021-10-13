@@ -79,26 +79,22 @@ export default class Navigation
        */
       this.view.onTouchStart = (_event) =>
       {
-         _event.preventDefault()
-
+         
          this.view.drag.alternative = _event.touches.length > 1
 
          this.view.down(_event.touches[0].clientX, _event.touches[0].clientY)
 
-         window.addEventListener('touchend', this.view.onTouchEnd)
-         window.addEventListener('touchmove', this.view.onTouchMove)
+         window.addEventListener('touchend', this.view.onTouchEnd, { passive: false })
+         window.addEventListener('touchmove', this.view.onTouchMove, { passive: false })
       }
 
       this.view.onTouchMove = (_event) =>
       {
-         _event.preventDefault()
-         
          this.view.move(_event.touches[0].clientX, _event.touches[0].clientY)
       }
 
       this.view.onTouchEnd = (_event) =>
       {
-         _event.preventDefault()
          
          this.view.up()
 
@@ -106,8 +102,20 @@ export default class Navigation
          window.removeEventListener('touchmove', this.view.onTouchMove)
       }
 
-      window.addEventListener('touchstart', this.view.onTouchStart)
+      window.addEventListener('touchstart', this.view.onTouchStart, { passive: false })
+
+      /**
+      * Context menu
+      */
+       this.view.onContextMenu = (_event) =>
+       {
+           _event.preventDefault()
+       }
+       
+       window.addEventListener('contextmenu', this.view.onContextMenu)
     }
+
+    
 
     update()
     {

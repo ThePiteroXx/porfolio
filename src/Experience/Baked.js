@@ -106,6 +106,12 @@ export default class Baked
             this.mouse.x =  (event.clientX - rect.left) / this.width * 2 - 1
             this.mouse.y = - ((event.clientY - rect.top) / this.height) * 2 + 1
         })
+
+        this.targetElement.addEventListener('touchstart', (event) => {
+            const rect = event.target.getBoundingClientRect()
+            this.mouse.x =  (event.touches[0].clientX - rect.left) / this.width * 2 - 1
+            this.mouse.y = - ((event.touches[0].clientY - rect.top) / this.height) * 2 + 1
+        }, {passive: false})
     }
 
     setRaycaster()
@@ -113,26 +119,27 @@ export default class Baked
         this.raycaster = new THREE.Raycaster()
         this.currentIntersect = null
 
-            this.targetElement.addEventListener('click', () => {
+        const turnLight = () => {
+            
+            this.targetElement.classList.toggle('clickLamp')
 
-                if(this.currentIntersect)
+                if(this.targetElement.classList.contains('clickLamp'))
                 {
-                this.targetElement.classList.toggle('clickLamp')
-
-                    if(this.targetElement.classList.contains('clickLamp'))
-                    {
                     this.model.material.uniforms.uChangeBaked.value = true
                     this.model.lampL.material.color = this.model.lampLcolorOn
                     this.experience.point1.visiblePoint = false
 
-                    return
-                    }
-                    this.experience.point1.visiblePoint = false
-                    this.model.material.uniforms.uChangeBaked.value = false 
-                    this.model.lampL.material.color = this.model.lampLcolorOff
+                return
                 }
+                this.experience.point1.visiblePoint = false
+                this.model.material.uniforms.uChangeBaked.value = false 
+                this.model.lampL.material.color = this.model.lampLcolorOff
 
-            })
+        }
+
+        this.targetElement.addEventListener('click', () => { if(this.currentIntersect) turnLight() })
+        // this.targetElement.addEventListener('touchstart', turnLight, {passive: false})
+
 
     }
 

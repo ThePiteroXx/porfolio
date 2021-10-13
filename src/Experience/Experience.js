@@ -36,7 +36,7 @@ export default class Experience
             return
         }
         this.time = new Time()
-        this.sizes = new Sizes()
+        this.sizes = new Sizes(this.targetElement)
         this.setConfig()
         this.setStats()
         // this.setDebug()
@@ -83,7 +83,7 @@ export default class Experience
     {
         if(this.config.debug)
         {
-            this.stats = new Stats(true)
+            this.stats = new Stats(false)
         }
     }
 
@@ -137,12 +137,12 @@ export default class Experience
 
         
         this.targetElement.addEventListener('click', () => {
-            if(!this.config.oneClick) return
+            if(!this.config.oneClick || this.sizes.width < this.sizes.desktopSize) return
 
             const duration = 0.7
             
             if(!this.clickTarget){
-                gsap.to(this.sizes.sizeViewport, {width: '80vw', height: '100vh', duration: duration, ease: 'power4.in'})
+                gsap.to(this.sizes.sizeViewport, {width: '80vw', duration: duration, ease: 'power4.in'})
                 setTimeout(() => {
                     this.clickTarget = false
                     
@@ -175,7 +175,7 @@ export default class Experience
             this.point1.visiblePoint = false
             this.selectors.btnExit.classList.remove('visible')
             
-            gsap.to(this.sizes.sizeViewport, {width: '60vw', height: '100vh', duration: duration, ease: 'power4.in'})
+            gsap.to(this.sizes.sizeViewport, {width: '60vw', duration: duration, ease: 'power4.in'})
             
             setTimeout(() => {
                 this.clickTarget = false
@@ -255,6 +255,12 @@ export default class Experience
 
         if(this.point1)
             this.point1.resize()
+
+        if(this.sizes.width < this.sizes.desktopSize)
+        {
+            this.point1.visiblePoint = false
+            this.selectors.btnExit.classList.remove('visible')
+        } 
     }
 
     destroy()
