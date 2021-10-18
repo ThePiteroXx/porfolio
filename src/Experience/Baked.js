@@ -119,7 +119,7 @@ export default class Baked
         this.raycaster = new THREE.Raycaster()
         this.currentIntersect = null
 
-        const turnLight = () => {
+        this.turnLight = () => {
             
             this.targetElement.classList.toggle('clickLamp')
 
@@ -127,17 +127,15 @@ export default class Baked
                 {
                     this.model.material.uniforms.uChangeBaked.value = true
                     this.model.lampL.material.color = this.model.lampLcolorOn
-                    this.experience.point1.visiblePoint = false
 
                 return
                 }
-                this.experience.point1.visiblePoint = false
                 this.model.material.uniforms.uChangeBaked.value = false 
                 this.model.lampL.material.color = this.model.lampLcolorOff
 
         }
 
-        this.targetElement.addEventListener('click', () => { if(this.currentIntersect) turnLight() })
+        this.targetElement.addEventListener('click', () => { if(this.currentIntersect) this.turnLight() })
         // this.targetElement.addEventListener('touchstart', turnLight, {passive: false})
 
 

@@ -11,7 +11,7 @@ import Renderer from './Renderer.js'
 import Camera from './Camera.js'
 import World from './World.js'
 import Navigation from './Navigation.js'
-import PointHelper from './PointHelper.js'
+import Content from './Content.js'
 
 import assets from './assets.js'
 
@@ -46,10 +46,8 @@ export default class Experience
         this.setResources()
         this.setWorld()
         this.setNavigation()
-        this.setPoints()
-        this.clickTarget()
-        this.addBasic()
         this.loadScreen()
+        this.content()
         
         this.sizes.on('resize', () =>
         {
@@ -64,7 +62,6 @@ export default class Experience
     {
        this.config = {}
     
-        this.config.oneClick = true // Click on canvas
         // Pixel ratio
         this.config.pixelRatio = Math.min(Math.max(window.devicePixelRatio, 1), 2)
 
@@ -126,84 +123,30 @@ export default class Experience
         this.navigation = new Navigation()
     }
 
-    setPoints()
-    {
-        this.point1 = new PointHelper(new THREE.Vector3(-2.7, 2.3, -1.3), 'Click on the lamp to turn On/Off light')
-    }
-
-    clickTarget() 
-    {
-        this.clickTarget = false
-
-        
-        this.targetElement.addEventListener('click', () => {
-            if(!this.config.oneClick || this.sizes.width < this.sizes.desktopSize) return
-
-            const duration = 0.7
-            
-            if(!this.clickTarget){
-                gsap.to(this.sizes.sizeViewport, {width: '80vw', duration: duration, ease: 'power4.in'})
-                setTimeout(() => {
-                    this.clickTarget = false
-                    
-                    this.point1.visiblePoint = true
-                    this.point1.createPoint()
-                    this.selectors.btnExit.classList.add('visible')
-
-                }, duration * 1100)
-                
-            }
-            
-            this.clickTarget = true
-            this.config.oneClick = false
-        })
-
-    }
-
-    addBasic()
-    {
-        this.selectors = {}
-        this.selectors.btnExit = document.querySelector('.btn-exit')
-        this.selectors.loaderProgress = document.querySelector('.loader-strip-progress')
-        this.selectors.screenLoad = document.querySelector('.loader')
-
-        
-        this.selectors.btnExit.addEventListener('click', () => {
-            const duration = 0.7
-
-            this.clickTarget = true
-            this.point1.visiblePoint = false
-            this.selectors.btnExit.classList.remove('visible')
-            
-            gsap.to(this.sizes.sizeViewport, {width: '60vw', duration: duration, ease: 'power4.in'})
-            
-            setTimeout(() => {
-                this.clickTarget = false
-                this.config.oneClick = true
-
-            }, duration * 1100)
-
-        })
-    }
 
     loadScreen()
     {
+        const screenLoad = document.querySelector('.loader')
+        const loaderProgress = document.querySelector('.loader-strip-progress')
 
         this.resources.on('progress', (_progress) =>
         {
             const progress = _progress.loaded / _progress.toLoad
-            this.selectors.loaderProgress.style.transform = `scaleX(${progress})`
+            loaderProgress.style.transform = `scaleX(${progress})`
 
             if(progress === 1)
             {
-                gsap.fromTo(this.selectors.screenLoad, {x: 0}, {x: '100%', ease: 'power3.in' ,duration: 0.6})
+                gsap.fromTo(screenLoad, {x: 0}, {x: '100%', ease: 'power3.in' ,duration: 0.6})
 
             }
             
         })
     }
 
-
+    setContent() 
+    {
+        this.content = new Content()
+    }
 
     update()
     {
@@ -214,11 +157,6 @@ export default class Experience
         
         if(this.world)
             this.world.update()
-        
-        if(this.clickTarget)
-        {
-            this.sizes.resize()
-        }
 
         if(this.renderer)
             this.renderer.update()
@@ -226,9 +164,6 @@ export default class Experience
         if(this.navigation)
             this.navigation.update()
 
-        if(this.point1)
-            this.point1.update()
-            
 
         window.requestAnimationFrame(() =>
         {
@@ -253,14 +188,7 @@ export default class Experience
         if(this.world)
             this.world.resize()
 
-        if(this.point1)
-            this.point1.resize()
 
-        if(this.sizes.width < this.sizes.desktopSize)
-        {
-            this.point1.visiblePoint = false
-            this.selectors.btnExit.classList.remove('visible')
-        } 
     }
 
     destroy()

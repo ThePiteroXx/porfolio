@@ -12,13 +12,13 @@ export default class Sizes extends EventEmitter
         this.targetElemet = element
         this.width = window.innerWidth
         this.height = window.innerHeight
-        this.desktopSize = 600
+        this.desktopSize = 1400
 
         // Canvas size
         this.viewport = {}
         this.sizeViewport = document.createElement('div')
-        this.sizeViewport.style.width = '60vw'
-        this.sizeViewport.style.height = '99vh'
+        this.sizeViewport.style.width = '100vw'
+        this.sizeViewport.style.height = '100vh'
         this.sizeViewport.style.position = 'absolute'
         this.sizeViewport.style.top = 0
         this.sizeViewport.style.left = 0
@@ -40,7 +40,7 @@ export default class Sizes extends EventEmitter
         this.width = window.innerWidth
         this.height = window.innerHeight
 
-        this.checkSize()
+        // this.checkSize()
         
         document.body.appendChild(this.sizeViewport)
         this.viewport.width = this.sizeViewport.clientWidth
@@ -69,8 +69,8 @@ export default class Sizes extends EventEmitter
             this.targetElemet.classList.remove('mobile')
             if(this.targetElemet.classList.contains('desktop')) return
 
-            this.sizeViewport.style.width = '100vw'
-            this.sizeViewport.style.height = '99vh'
+            this.sizeViewport.style.width = '60vw'
+            this.sizeViewport.style.height = '90vh'
             this.targetElemet.classList.add('desktop')
         }
     }
