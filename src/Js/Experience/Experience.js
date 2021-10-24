@@ -2,11 +2,11 @@ import * as THREE from 'three'
 import { Pane } from 'tweakpane'
 import { gsap } from 'gsap'
 
-import Time from './Utils/Time.js'
-import Sizes from './Utils/Sizes.js'
-import Stats from './Utils/Stats.js'
-
+import Time from '../Utils/Time.js'
 import Resources from './Resources.js'
+import Stats from '../Utils/Stats.js'
+
+import Sizes from './Sizes.js'
 import Renderer from './Renderer.js'
 import Camera from './Camera.js'
 import World from './World.js'
@@ -29,7 +29,7 @@ export default class Experience
 
         // Options
         this.targetElement = _options.targetElement
-
+        console.log(this)
         if(!this.targetElement)
         {
             console.warn('Missing \'targetElement\' property')
@@ -47,7 +47,7 @@ export default class Experience
         this.setWorld()
         this.setNavigation()
         this.loadScreen()
-        this.content()
+        this.setContent()
         
         this.sizes.on('resize', () =>
         {

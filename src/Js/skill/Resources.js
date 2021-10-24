@@ -1,6 +1,7 @@
 import * as THREE from 'three'
-import EventEmitter from './Utils/EventEmitter.js'
-import Loader from './Utils/Loader.js'
+import EventEmitter from '../Utils//EventEmitter.js'
+import Loader from '../Utils/Loader.js'
+import Skill from './Skill.js'
 
 export default class Resources extends EventEmitter
 {
@@ -12,7 +13,8 @@ export default class Resources extends EventEmitter
         this.items = {}
 
         // Loader
-        this.loader = new Loader({ renderer: this.renderer })
+        this.skill = new Skill()
+        this.loader = new Loader(this.skill)
 
         this.groups = {}
         this.groups.assets = [..._assets]

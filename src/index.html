@@ -26,10 +26,10 @@
         <div class="nav-mobile" id="navMobile">
             <ul class="nav-mobile-list">
                 <li><i class="fas fa-home"></i>Home</li>
-                <li><i class="fas fa-user"></i>&nbsp;About Me</li>
-                <li><i class="fas fa-cog"></i>Skills</li>
-                <li><i class="fas fa-award"></i>&nbsp;Work</li>
-                <li><i class="fas fa-envelope"></i>Contact</li>
+                <li><i class="fas fa-user" style="margin-right: 21px;"></i>About Me</li>
+                <li><i class="fas fa-cog" style="margin-right: 19.95px;"></i>Skills</li>
+                <li><i class="fas fa-award" style="margin-right: 23.5px;"></i>Work</li>
+                <li><i class="fas fa-envelope" style="margin-right: 18.5px;"></i>Contact</li>
             </ul>
 
             <div class="nav-mobile-time">
@@ -40,49 +40,53 @@
                 </div>
             </div>
         </div>
+
+        <div class="nav-desktop">
+            <ul class="nav-desktop-list">
+                <li><i class="fas fa-home nav-li-desktop"></i>Home</li>
+                <li><i class="fas fa-user nav-li-desktop"></i>About Me</li>
+                <li><i class="fas fa-cog nav-li-desktop"></i>Skills</li>
+                <li><i class="fas fa-award nav-li-desktop"></i>Work</li>
+                <li><i class="fas fa-envelope nav-li-desktop"></i>Contact</li>
+            </ul>
+        </div>
     </nav>
 
-    <header class="header">
-        <div class="header-column1">
-            <div class="header-content">
-                <h1 class="header-heading">peter skubisz</h1>
-                <p class="header-description">New Generation</p>
-                <a href="#"><button class="header-btn"><span>About Me</span></button></a>
-            </div>
-        </div>
-        <div class="header-column2">
+    <main class="main">
+    
+        <section class="home">
             <div class="gradient-top"></div>
-            <div class="header-content">
-                <h1 class="header-heading">peter skubisz</h1>
-                <p class="header-description">New Generation</p>
-                <a href="#"><button class="header-btn"><span>About Me</span></button></a>
+            <div class="home__content">
+                <h1 class="home__heading">peter skubisz</h1>
+                <p class="home__description">New Generation</p>
+                <a href="#"><button class="home__btn"><span>About Me</span></button></a>
             </div>
 
             <canvas class="experience"></canvas>
             <div class="gradient-bot"></div>
-            
-            <div class="container-points">
-                <button class="btn-exit">
-                    <span class='bars'>
-                        <span class="bar bar-1"></span>
-                        <span class="bar bar-2"></span>
-                    </span>
-                </button>
-            </div>    
-        </div>
-    </header>
-    
-    <footer class="footer">
-        <div id="btnLamp">
-            <i class="fas fa-lightbulb"></i>
-        </div>
+               
+            <div class="home__media">
+                <div id="btnLamp">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+        
+                <div class="home__media__socials">
+                    <i class="fab fa-github"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-linkedin"></i>
+                </div>
+            </div> 
 
-        <div class="media-socials">
-            <i class="fab fa-github"></i>
-            <i class="fab fa-instagram"></i>
-            <i class="fab fa-linkedin"></i>
-        </div>
-    </footer>    
+        </section>
+
+        <section class="skills">
+            
+            <canvas class="webgl"></canvas>
+        </section>
+
+    </main>
+    
+       
     
     <div class="loader">
         <h2 class="loader-heading">Loading...</h2>
@@ -90,5 +94,6 @@
             <div class="loader-strip-progress"></div>
         </div>
     </div>
+
 </body>
 </html>

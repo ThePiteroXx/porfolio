@@ -3,6 +3,8 @@ import * as THREE from 'three'
 import Experience from './Experience.js'
 import vertexShader from './shaders/baked/vertexShader.glsl'
 import fragmentShader from './shaders/baked/fragmentShader.glsl'
+import vertexShaderLamp from './shaders/lamp/vertexShader.glsl'
+import fragmentShaderLamp from './shaders/lamp/fragmentShader.glsl'
 
 
 export default class Baked
@@ -58,7 +60,7 @@ export default class Baked
         this.model.lampLcolorOn = new THREE.Color('#fff194')
         this.model.lampL.material = new THREE.MeshBasicMaterial({color: this.model.lampLcolorOff})
         
-        this.model.material = new THREE.ShaderMaterial({
+        this.model.materialBaked = new THREE.ShaderMaterial({
             uniforms:
             {
                 uChangeBaked: { value: false},
@@ -76,21 +78,34 @@ export default class Baked
             vertexShader: vertexShader,
             fragmentShader: fragmentShader
         })
+
+
+        this.model.materialLamp = new THREE.ShaderMaterial({
+            uniforms:
+            {
+                uBakedTextureLight: { value: this.model.bakedTexture},
+                uBakedNightTexture: { value: this.model.bakedDarkTexture },
+                uLampChange: {value: false}
+            },
+            vertexShader: vertexShaderLamp,
+            fragmentShader: fragmentShaderLamp
+        })
         
         this.model.baked.traverse((_child) =>
         {
             if(_child instanceof THREE.Mesh)
             {
-                _child.material = this.model.material
+                _child.material = this.model.materialBaked
             }
         })
         this.model.lamp.traverse((_child) =>
         {
             if(_child instanceof THREE.Mesh)
             {
-                _child.material = this.model.material
+                _child.material = this.model.materialBaked
             }
         })
+        
 
         this.scene.add(this.model.baked, this.model.lampL, this.model.lamp)
         
@@ -125,13 +140,17 @@ export default class Baked
 
                 if(this.targetElement.classList.contains('clickLamp'))
                 {
-                    this.model.material.uniforms.uChangeBaked.value = true
+                    this.model.materialBaked.uniforms.uChangeBaked.value = true
                     this.model.lampL.material.color = this.model.lampLcolorOn
+                    this.model.materialLamp.uniforms.uLampChange.value = true
+                    document.querySelector('.fa-lightbulb').classList.add('active')
 
                 return
                 }
-                this.model.material.uniforms.uChangeBaked.value = false 
+                this.model.materialBaked.uniforms.uChangeBaked.value = false 
                 this.model.lampL.material.color = this.model.lampLcolorOff
+                this.model.materialLamp.uniforms.uLampChange.value = false
+                document.querySelector('.fa-lightbulb').classList.remove('active')
 
         }
 
@@ -149,9 +168,9 @@ export default class Baked
         this.height = this.experience.config.height
 
         // changing led color
-        this.model.material.uniforms.uLightColor.value.x = Math.abs(Math.sin(this.time.elapsed * 0.0009)) 
-        this.model.material.uniforms.uLightColor.value.y = Math.abs(Math.cos(this.time.elapsed * 0.0008)) 
-        this.model.material.uniforms.uLightColor.value.z = Math.abs(Math.sin(this.time.elapsed * 0.001)) 
+        this.model.materialBaked.uniforms.uLightColor.value.x = Math.abs(Math.sin(this.time.elapsed * 0.0009)) 
+        this.model.materialBaked.uniforms.uLightColor.value.y = Math.abs(Math.cos(this.time.elapsed * 0.0008)) 
+        this.model.materialBaked.uniforms.uLightColor.value.z = Math.abs(Math.sin(this.time.elapsed * 0.001)) 
 
         // update raycaster
         this.raycaster.setFromCamera(this.mouse, this.camera.modes.default.instance)
@@ -161,10 +180,12 @@ export default class Baked
         
         if(intersect.length) {
             this.currentIntersect = intersect[0]
+            this.model.lamp.material = this.model.materialLamp
             this.targetElement.style.cursor = "pointer"
         }else {
             this.currentIntersect = null
             this.targetElement.style.cursor = "default"
+            this.model.lamp.material = this.model.materialBaked
         }
 
     }

@@ -19,7 +19,13 @@ module.exports = {
             ]
         }),
         new HtmlWebpackPlugin({
+            filename: 'index.html',
             template: path.resolve(__dirname, '../src/index.html'),
+            minify: true
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'skills.html',
+            template: path.resolve(__dirname, '../src/skills.html'),
             minify: true
         }),
         new MiniCSSExtractPlugin()

@@ -4,6 +4,7 @@ uniform sampler2D uLightMapTexture;
 uniform sampler2D uBakedTextureLight;
 
 uniform bool uChangeBaked;
+uniform bool uLampHover;
 
 uniform vec3 uLightColor;
 
@@ -32,6 +33,8 @@ void main()
     else {
         bakedColor = blend(bakedNightColor, uLightColor, lightMapColor.g * 1.2);
     }
+    
+    // lamp code 
 
     gl_FragColor = vec4(bakedColor, 1.0);
 }

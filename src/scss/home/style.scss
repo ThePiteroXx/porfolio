@@ -1,0 +1,175 @@
+
+
+
+.main {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+.home {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    
+    .gradient-top {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 80px;
+        background: $alpha-gradient-top;
+    }
+    
+    .gradient-bot {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 80px;
+        background: $alpha-gradient-bot;
+    }
+    
+    
+    &__content {
+        padding: 1em;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transform: translate(-50%, -50%);
+    
+    }
+
+    &__heading {
+        width: 300px;
+        font-family: 'Big Shoulders Stencil Display', cursive;
+        font-size: 3.8rem;
+        color: #ffffff;
+        text-align: center;
+        text-transform: uppercase;
+        opacity: 0.7;
+    }
+
+    &__description {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.8rem;
+        color: $cyan;
+    }
+
+    &__btn {
+        padding: 0.5em 1.8em;
+        margin-top: 3em;
+        position: relative;
+        background-color: transparent;
+        color: #ffffff;
+        border: 2px solid $cyan;
+        text-decoration: none;
+        letter-spacing: 2px;
+        -webkit-box-reflect: below 0px linear-gradient(transparent, #0002);
+        transition: box-shadow 0.3s;
+        transition-delay: 0.5s;
+
+        span {
+            position: relative;
+            font-family: 'Source Sans Pro', sans-serif;
+            color: #ffffff;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: color .3s;
+            transition-delay: .5s;
+        }
+
+        &:hover {
+            box-shadow: 0 0 10px $cyan,
+            0 0 20px $cyan,
+            0 0 40px $cyan,
+            0 0 80px $cyan,
+            0 0 160px $cyan;
+            cursor: pointer;
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: -0.9em;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 2px;
+            background-color: $cyan;
+            box-shadow: -5px -8px 0 $cyan, 5px 8px 0 $cyan;
+            transition: width 0.3s, left 0.3s, height 0.3s, box-shadow 0.3s;
+            transition-delay: 0.5s, 0s, 0.25s, 0.25s;
+
+        }
+
+        &:hover::before {
+            width: calc(100% + 4px);
+            height: calc(6px + 100%);
+            left: -2px;
+            box-shadow: 0 0 0 $cyan, 0 0 0 $cyan;
+            
+        }
+
+        &:hover span {
+            color: #000;
+            z-index: 2;
+        }
+
+    }
+    
+    &__media{
+        padding: 1.5em;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 10%;
+        z-index: 99;
+    
+        .fa-lightbulb {
+            margin: 0 0.4em;
+            font-size: 3.3rem;
+            color: #ffffff;
+    
+            &.active {
+                color: #fce76f;
+                filter: drop-shadow(0 0 9px #fce76f);
+            }
+    
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    
+        &__socials {
+            .fa {
+                
+                &-github, &-instagram, &-linkedin {
+                    margin: 0 0.4em;
+                    font-size: 3.3rem;
+                    color: $creame;
+                    transition: color .3s;
+    
+                    &:hover {
+                        color: $cyan;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@import './small.scss';
+@import './desktop.scss';
