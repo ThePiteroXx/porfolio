@@ -15,7 +15,7 @@ export default class Sizes extends EventEmitter
         if(this.desktopSize > window.innerWidth)
         {
             this.width = window.innerWidth
-            this.height = window.innerHeight
+            this.height = window.innerHeight / 2
         }
         else 
         {
@@ -40,7 +40,7 @@ export default class Sizes extends EventEmitter
         if(this.desktopSize > window.innerWidth)
         {
             this.width = window.innerWidth
-            this.height = window.innerHeight
+            this.height = window.innerHeight / 2 
         }
         else 
         {

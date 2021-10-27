@@ -1,4 +1,9 @@
-// @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&family=Karla&display=swap');
+@font-face {
+    font-family: Calibre;
+    font-weight: 400;
+    src: url('../../static/assets/CalibreRegular.woff?v=1.101') format('woff');
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Source+Sans+Pro:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@900&display=swap');
 
@@ -25,9 +30,17 @@ h1, h2, h3, h4 {
     // font-family: 'Karla', sans-serif;
     font-family: 'Playfair Display', serif;
 }
+h2 {
+    font-family: 'Calibre';
+    font-weight: 600;
+    color: $cyan
+}
 p {
     // font-family: 'Inconsolata', monospace;
-    font-family: 'Source Sans Pro', sans-serif;
+    // font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Calibre';
+    font-weight: 400;
+    color: $paragraf-color
 }
 
 .loader {
@@ -153,9 +166,13 @@ p {
             align-items: center;
             font-family: 'Playfair Display', serif;
             font-size: 2rem;
-            color: $creame;
             border-radius: 10px;
             transition: color .3s, background-color .3s;
+
+            a {
+                color: $creame;
+                text-decoration: none;
+            }
             
             .svg-inline--fa {
                 margin-right: 0.8em; 
@@ -208,9 +225,20 @@ p {
     }
 }
 
+main {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
 @import './home/style.scss';
 @import './skills/style.scss';
 
+.is-visible {
+    pointer-events: all;
+}
 @media screen and (min-width: 1400px) {
     .nav-hamburger, .nav-mobile {
         display: none;
@@ -238,14 +266,23 @@ p {
             
             li {
                 margin: 0 1.3em 4em;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
                 font-family: 'Playfair Display', serif;
                 font-size: 1.8rem;
                 text-align: center;
-                color: $creame;
                 transition: color .3s;
+
+                a {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    text-decoration: none;
+                    color: $creame;
+
+                    &:hover {
+                        cursor: pointer;
+                        color: $cyan-lighter;
+                    }
+                }
 
                 .svg-inline--fa {
                     margin-bottom: 0.2em;
@@ -253,14 +290,10 @@ p {
                     transition: opacity .3s;
                 }
 
-                &:hover {
-                    cursor: pointer;
-                    color: $cyan-lighter;
-                }
-
                 &:hover .svg-inline--fa { 
                     opacity: 1;
                 }
+
             }
         
         }

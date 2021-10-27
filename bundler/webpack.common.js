@@ -23,11 +23,6 @@ module.exports = {
             template: path.resolve(__dirname, '../src/index.html'),
             minify: true
         }),
-        new HtmlWebpackPlugin({
-            filename: 'skills.html',
-            template: path.resolve(__dirname, '../src/skills.html'),
-            minify: true
-        }),
         new MiniCSSExtractPlugin()
     ],
     module:
@@ -73,11 +68,11 @@ module.exports = {
 
             // Fonts
             {
-                test: /\.(ttf|eot|woff|woff2)$/,
+                test: /\.(ttf|eot|otf|woff|woff2)$/,
                 type: 'asset/resource',
                 generator:
                 {
-                    filename: 'assets/fonts/[hash][ext]'
+                    filename: 'assets/font/[hash][ext]'
                 }
             },
 

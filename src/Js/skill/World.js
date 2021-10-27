@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import Skill from './Skill.js'
+import About from './About.js'
 
 import SphereIcons  from './SphereIcons.js'
 
@@ -7,11 +7,11 @@ export default class World
 {
     constructor(_options)
     {
-        this.skill = new Skill()
-        this.resources = this.skill.resources
-        this.config = this.skill.config
-        this.scene = this.skill.scene
-        this.time = this.skill.time
+        this.about = new About()
+        this.resources = this.about.resources
+        this.config = this.about.config
+        this.scene = this.about.scene
+        this.time = this.about.time
      
         this.resources.on('groupEnd', (_group) =>
         {

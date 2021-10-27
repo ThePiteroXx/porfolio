@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import Skill from './Skill'
+import About from './About'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js'
 
@@ -7,14 +7,14 @@ export default class Renderer
 {
     constructor(_options = {})
     {
-        this.skill = new Skill()
-        this.config = this.skill.config
-        this.debug = this.skill.debug
-        this.stats = this.skill.stats
-        this.time = this.skill.time
-        this.sizes = this.skill.sizes
-        this.scene = this.skill.scene
-        this.camera = this.skill.camera
+        this.about = new About()
+        this.config = this.about.config
+        this.debug = this.about.debug
+        this.stats = this.about.stats
+        this.time = this.about.time
+        this.sizes = this.about.sizes
+        this.scene = this.about.scene
+        this.camera = this.about.camera
         
         this.usePostprocess = false
         this.setInstance()
@@ -22,7 +22,7 @@ export default class Renderer
 
     setInstance()
     {
-        this.clearColor = '#010101'
+        this.clearColor = '#0b1523'
 
         let antialias;
 
@@ -34,7 +34,7 @@ export default class Renderer
 
         // Renderer
         this.instance = new THREE.WebGLRenderer({
-            canvas: this.skill.targetElement,
+            canvas: this.about.targetElement,
             alpha: false,
             antialias: antialias
         })

@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import Skill from './Skill.js'
+import About from './About.js'
 
 import vertexSphereShader from './shaders/sphere/vertex.glsl'
 import fragmentSphereShader from './shaders/sphere/fragment.glsl'
@@ -10,13 +10,13 @@ export default class SphereIcons
 {
     constructor(_options)
     {
-        this.skill = new Skill()
-        this.resources = this.skill.resources
-        this.config = this.skill.config
-        this.scene = this.skill.scene
-        this.time = this.skill.time
-        this.camera = this.skill.camera
-        this.targetElemet = this.skill.targetElement
+        this.about = new About()
+        this.resources = this.about.resources
+        this.config = this.about.config
+        this.scene = this.about.scene
+        this.time = this.about.time
+        this.camera = this.about.camera
+        this.targetElemet = this.about.targetElement
   
       
         this.setModel()
@@ -35,7 +35,7 @@ export default class SphereIcons
         this.model = {}
 
         //FOG
-        const fog = new THREE.Fog('#000000', 6, 8)
+        const fog = new THREE.Fog('#0b1523', 6, 8)
         this.scene.fog = fog
 
         //Group
@@ -94,9 +94,9 @@ export default class SphereIcons
         this.speedAnimation = 0.04;
 
         this.model.sphereHover = new THREE.Mesh(
-            new THREE.SphereBufferGeometry(2,4,4)
+            new THREE.SphereBufferGeometry(2,4,10)
         )
-        this.model.sphereHover.position.z = 0.5
+        this.model.sphereHover.position.z = -0.5
         this.model.sphereHover.visible = false
         this.scene.add(this.model.sphereHover)
 
@@ -117,16 +117,16 @@ export default class SphereIcons
         this.raycaster = new THREE.Raycaster()
         this.currentIntersect = null
 
-        window.addEventListener('mousemove', () => {
+        this.targetElemet.addEventListener('mousemove', () => {
             if(this.currentIntersect) {
-                this.speedAnimation = 0.01
-                this.newAxis.set(0.2 , 0.5 , 0).normalize()
+                this.speedAnimation = 0.02
+                this.newAxis.set( this.mouse.x, this.mouse.y , 0).normalize()
+                return
             }
-            else {
-                this.speedAnimation = 0.04
-                this.newAxis.set(- 0.5, - 0.5, 0).normalize()
-            }
-        })
+            this.speedAnimation = 0.04
+            this.newAxis.set(- 0.5, - 0.5, 0).normalize()
+            
+        }, false)
     }
 
     resize()
@@ -141,6 +141,7 @@ export default class SphereIcons
         
         if(intersect.length) {
             this.currentIntersect = intersect[0]
+            
         } else {
             this.currentIntersect = null
         }

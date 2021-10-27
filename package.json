@@ -8,11 +8,11 @@
   "dependencies": {
     "@babel/core": "^7.14.6",
     "@babel/preset-env": "^7.14.7",
-    "@dogstudio/highway": "^2.2.1",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^9.0.1",
     "css-loader": "^5.2.6",
+    "extract-css-chunks-webpack-plugin": "^4.9.0",
     "file-loader": "^6.2.0",
     "glsl-blend": "^1.0.3",
     "glslify-loader": "^2.0.0",

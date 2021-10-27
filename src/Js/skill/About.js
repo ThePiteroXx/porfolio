@@ -9,7 +9,7 @@ import Resources from './Resources.js'
 import assets from './assets.js'
 import Renderer from './Renderer.js'
 
-export default class Skill
+export default class About
 {
 
     static instance
@@ -17,11 +17,11 @@ export default class Skill
     constructor(targetElement)
     {
         
-        if(Skill.instance)
+        if(About.instance)
         {
-            return Skill.instance
+            return About.instance
         }
-        Skill.instance = this
+        About.instance = this
 
         this.targetElement = targetElement
         
@@ -70,11 +70,6 @@ export default class Skill
         this.update()
     }
     
-    setTarget()
-    {
-        this.targetElement = document.querySelector('.webgl')
-    }
-
     setConfig()
     {
         this.config = {}

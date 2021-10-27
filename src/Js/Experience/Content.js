@@ -23,8 +23,6 @@ export default class Content
 
     setSelectors()
     {
-        this._selectors.navBtn = document.querySelector('#navBtn')
-        this._selectors.navMobile = document.querySelector('#navMobile')
         this._selectors.lampBtn = document.querySelector('#btnLamp')
         this._selectors.timer = document.querySelector('#timer')
     }
@@ -52,18 +50,6 @@ export default class Content
 
     setListeners()
     {
-        this._selectors.navBtn.addEventListener('click', () =>  {
-            this._selectors.navBtn.classList.toggle('active')
-
-            if(this._selectors.navBtn.classList.contains('active'))
-            {
-                this._selectors.navMobile.classList.add('active')
-            } 
-            else 
-            {
-                this._selectors.navMobile.classList.remove('active')
-            }
-        })
 
         this._selectors.lampBtn.addEventListener('click', () => {
             document.querySelector('.fa-lightbulb').classList.toggle('active')

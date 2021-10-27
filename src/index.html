@@ -25,11 +25,10 @@
     <nav>
         <div class="nav-mobile" id="navMobile">
             <ul class="nav-mobile-list">
-                <li><i class="fas fa-home"></i>Home</li>
-                <li><i class="fas fa-user" style="margin-right: 21px;"></i>About Me</li>
-                <li><i class="fas fa-cog" style="margin-right: 19.95px;"></i>Skills</li>
-                <li><i class="fas fa-award" style="margin-right: 23.5px;"></i>Work</li>
-                <li><i class="fas fa-envelope" style="margin-right: 18.5px;"></i>Contact</li>
+                <li id="navHomeMobile"><a href="#"><i class="fas fa-home"></i>Home</a></li>
+                <li id="navAboutMobile"><a href="#about"><i class="fas fa-user" style="margin-right: 21px;"></i>About Me</a></li>
+                <li id="navWorkMobile"><a href="#work"><i class="fas fa-award" style="margin-right: 23.5px;"></i>Work</a></li>
+                <li id="navContactMobile"><a href="#contact"><i class="fas fa-envelope" style="margin-right: 18.5px;"></i>Contact</a></li>
             </ul>
 
             <div class="nav-mobile-time">
@@ -43,18 +42,17 @@
 
         <div class="nav-desktop">
             <ul class="nav-desktop-list">
-                <li><i class="fas fa-home nav-li-desktop"></i>Home</li>
-                <li><i class="fas fa-user nav-li-desktop"></i>About Me</li>
-                <li><i class="fas fa-cog nav-li-desktop"></i>Skills</li>
-                <li><i class="fas fa-award nav-li-desktop"></i>Work</li>
-                <li><i class="fas fa-envelope nav-li-desktop"></i>Contact</li>
+                <li id="navHomeDesktop"><a href="#"><i class="fas fa-home"></i>Home</a></li>
+                <li id="navAboutDesktop"><a href="#about"><i class="fas fa-user"></i>About Me</a></li>
+                <li id="navWorkDesktop"><a href="#work"><i class="fas fa-award"></i>Work</a></li>
+                <li id="navContactDesktop"><a href="#contact"><i class="fas fa-envelope"></i>Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <main class="main">
+    <main>
     
-        <section class="home">
+        <section class="home" id="home">
             <div class="gradient-top"></div>
             <div class="home__content">
                 <h1 class="home__heading">peter skubisz</h1>
@@ -78,12 +76,24 @@
             </div> 
 
         </section>
-
-        <section class="skills">
-            
-            <canvas class="webgl"></canvas>
+        <section class="about" id="about">
+            <div class="about__content">
+                <h2 class="about__content__heading">About Me</h2>
+                <div class="about__content__info">
+                    <div class="about__content__portret">
+                        <div class="border"></div>
+                        <img src="../static/assets/portret.jpg" alt="myself" class="img">
+                    </div>
+                    <p class="text-info">Hello! My name is Peter. I'm 19 years old and I enjoy creating "modern" website.</p>
+                </div>
+                <p class="about__content__text">I learn new things quickly and try to do everything precisely. I'm very motivated to learn more. </p>
+                <p class="about__content__text">For some time programming has become my main passion. The second hobby is training myself body. I always follow my goals and I am consistent in doing so.</p>
+                <p class="about__content__text">I started my adventure with front-end development from the beginning of 2021</p>
+            </div>
+            <canvas class="canvas-about"></canvas>
         </section>
 
+        
     </main>
     
        
