@@ -1,0 +1,199 @@
+.about {
+    padding-top: 9em;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    color: $creame;
+    background-color: $bgc-color;
+    pointer-events: none;
+    overflow: hidden;
+
+    .canvas-about{
+        width: 100%;
+    }
+
+    &.is-visible {
+        overflow-y: scroll;
+    }
+
+    &__content {
+        margin: 0 auto;
+        max-width: 750px;
+        padding: 1em 3em;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        &__info {
+            margin: 1.3em 0.5em;
+            display: flex;
+            align-items: center;
+            align-self: flex-start;
+
+            .text-info {
+                margin-left: 1.5em;
+                font-size: 1.6rem;
+                width: 50%;
+                color: rgb(150, 150, 150);
+            }
+        }
+        
+        &__heading {
+            position: relative;
+            font-size: 4.3rem;
+
+            &::before {
+                position: absolute;
+                top: 40%;
+                right: -80px;
+                content: '';
+                width: 70px;
+                height: 2px;
+                background-color: $creame;
+            }
+
+            &::after{
+                position: absolute;
+                top: 40%;
+                left: -80px;
+                content: '';
+                width: 70px;
+                height: 2px;
+                background-color: $creame;
+            }
+        }
+
+        &__portret {
+            position: relative;
+            width: 100px;
+            height: 100px;
+
+            .img {
+                position: absolute;
+                top: 5px;
+                left: 10px;
+                width: 100%;
+                border-radius: 50%;
+                z-index: 2;
+            }
+            .border {
+                position: absolute;
+                top: -10px;
+                left: -10px;
+                content: '';
+                width: 100%;
+                height: 100%;
+                border: 3px solid $cyan;
+                border-radius: 50%;
+                background-color: transparent;
+                z-index: 1;
+            }
+        }
+       
+
+        &__text {
+            margin-top: 0.6em;
+            letter-spacing: 0.5px;
+            font-size: 1.8rem;
+            align-self: flex-start;
+
+            a{
+                color: $cyan;
+                text-decoration: none;
+                cursor: pointer;
+            }
+        }
+
+        &__skill {
+            margin-top: 1em;
+            padding: 0 2em;
+            align-self: center;
+            width: 100%;
+            max-width: 550px;
+
+            &-heading{
+                margin: 1em 0 0.5em;
+                font-size: 2rem;
+                color: $green;
+                text-align: center;
+            }
+
+            &-list {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                display: grid;
+                gap: 0.4rem;
+
+                li {
+                    display: grid;
+                    grid-template-columns: 0 1fr 1.5fr;
+                    gap: 1.5em;
+                    align-items: center;
+                    font-size: 1.5rem;
+                    font-family: "Calibre";
+                    
+                    &::before {
+                        margin-top: -0.25em;
+                        content: '';
+                        width: 5px;
+                        height: 5px;
+                        border: 1px solid $cyan;
+                        border-radius: 50%;
+                    }
+
+                    .strip-of-level {
+                        margin-top: -0.25em;
+                        position: relative;
+                        width: 100%;
+                        height: 5px;
+                        background-color: $green;
+
+                        &::before {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            content: '';
+                            height: 100%;
+                            background-color: $cyan;
+                        }
+
+                        &--html::before {
+                            width: 85%;
+                        }
+
+                        &--css::before {
+                            width: 70%;
+                        }
+
+                        &--js::before {
+                            width: 50%;
+                        }
+
+                        &--threejs::before {
+                            width: 30%;
+                        }
+
+                        &--bundler::before {
+                            width: 40%;
+                        }
+
+                        &--blender::before {
+                            width: 15%;
+                        }
+                    }
+
+                }
+            }
+             
+        }
+    }
+}
+
+
+@import './small';
+@import './desktop';
+@import './desktopxl';

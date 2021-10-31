@@ -22,6 +22,7 @@ let $navSkillsDesktop;
 let $navWorkDesktop; 
 let $navContactDesktop;
 
+let $allNavDesktopLink;
 let $navHomeMobile;
 let $navAboutMobile; 
 let $navSkillsMobile;
@@ -53,6 +54,7 @@ const prepareDOMElements = () =>
     $navAboutMobile = document.querySelector('#navAboutMobile')
     $navWorkMobile = document.querySelector('#navWorkMobile')
     $navContactMobile = document.querySelector('#navContactMobile')
+    $allNavDesktopLink = [...document.querySelectorAll('.nav-desktop-list li')]
     
     $navBtn = document.querySelector('#navBtn')
     $navMobile = document.querySelector('#navMobile')
@@ -121,21 +123,25 @@ const checkHashLocation = () => {
     if(hash === '#home' || hash === '')
     {
         $main.classList.add('home-is-active')
+        $navHomeDesktop.classList.add('active')
         setClassVisible('home')
     }
     if(hash === '#about')
     {
      $main.classList.add('about-is-active')
+     $navAboutDesktop.classList.add('active')
      setClassVisible('about')
     }
     if(hash === '#work')
     {
         $main.classList.add('work-is-active')
+        $navWorkDesktop.classList.add('active')
         setClassVisible('work')
     }
     if(hash === '#contact')
     {
      $main.classList.add('contact-is-active')
+     $navContactDesktop.classList.add('active')
      setClassVisible('contact')
     }
 }
@@ -151,6 +157,7 @@ const changePageScene = (idScene) => {
         if(idScene === idSection){
             $tl.to(oldPage, 1, {opacity: 0})
             .to(element, 0.5, {opacity: 1, onComplete: () => {
+                $allNavDesktopLink.forEach(element => element.className = ' ')
                 checkHashLocation()
             }})
         }

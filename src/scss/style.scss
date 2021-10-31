@@ -234,7 +234,7 @@ main {
 }
 
 @import './home/style.scss';
-@import './skills/style.scss';
+@import './about/style.scss';
 
 .is-visible {
     pointer-events: all;
@@ -260,9 +260,6 @@ main {
             width: 100%;
             list-style-type: none;
 
-            a {
-                text-decoration: none;
-            }
             
             li {
                 margin: 0 1.3em 4em;
@@ -270,6 +267,10 @@ main {
                 font-size: 1.8rem;
                 text-align: center;
                 transition: color .3s;
+
+                &.active .svg-inline--fa{
+                    opacity: 1;
+                }
 
                 a {
                     display: flex;
@@ -300,4 +301,14 @@ main {
     }
 
 
+}
+
+@media screen and (min-width: 2000px) {
+    .nav-desktop {
+        &-list {
+            li {
+                font-size: 2vh;
+            }
+        }
+    }
 }

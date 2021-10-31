@@ -99,7 +99,7 @@ export default class About
     {
         this.camera = new THREE.PerspectiveCamera(45, this.config.width / this.config.height, 0.1, 100)
         this.camera.position.x = 0
-        this.camera.position.y = 0
+        this.camera.position.y = 0.3
         this.camera.position.z = 7
 
         this.scene.add(this.camera)
