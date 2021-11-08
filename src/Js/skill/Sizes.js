@@ -11,6 +11,13 @@ export default class Sizes extends EventEmitter
         
         this.targetElemet = element
         this.desktopSize = 1400
+ 
+        
+        // Resize event
+        this.resize = this.resize.bind(this)
+        window.addEventListener('resize', this.resize)
+
+        this.resize()
 
         if(this.desktopSize > window.innerWidth)
         {
@@ -22,14 +29,6 @@ export default class Sizes extends EventEmitter
             this.width = window.innerWidth / 2
             this.height = window.innerHeight 
         }
-        
-        
-        // Resize event
-        this.resize = this.resize.bind(this)
-        window.addEventListener('resize', this.resize)
-
-        this.resize()
-
     }
 
     /**
@@ -45,7 +44,6 @@ export default class Sizes extends EventEmitter
         else 
         {
             this.width = window.innerWidth / 2
-            this.height = window.innerHeight 
         }
 
 

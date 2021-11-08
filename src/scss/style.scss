@@ -21,12 +21,26 @@
 html
 {
     font-size: 62.5%;
+    scrollbar-width: thin;
+    scrollbar-color: black transparent;
+
+    &::-webkit-scrollbar {
+        width: 8vw;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: black;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: green;
+    }
 }
 body
 { 
     background-color: #000;
 }
-h1, h2, h3, h4 {
+h3, h4 {
     // font-family: 'Karla', sans-serif;
     font-family: 'Playfair Display', serif;
 }
@@ -235,6 +249,7 @@ main {
 
 @import './home/style.scss';
 @import './about/style.scss';
+@import './work/style.scss';
 
 .is-visible {
     pointer-events: all;
@@ -263,7 +278,8 @@ main {
             
             li {
                 margin: 0 1.3em 4em;
-                font-family: 'Playfair Display', serif;
+                font-family: 'Calibre';
+                font-weight: 800;
                 font-size: 1.8rem;
                 text-align: center;
                 transition: color .3s;
@@ -277,22 +293,19 @@ main {
                     flex-direction: column;
                     align-items: center;
                     text-decoration: none;
+                    
                     color: $creame;
 
                     &:hover {
                         cursor: pointer;
-                        color: $cyan-lighter;
+                        color: $cyan-power;
                     }
                 }
 
                 .svg-inline--fa {
                     margin-bottom: 0.2em;
                     opacity: 0;
-                    transition: opacity .3s;
-                }
-
-                &:hover .svg-inline--fa { 
-                    opacity: 1;
+                    transition: opacity .3s;     
                 }
 
             }

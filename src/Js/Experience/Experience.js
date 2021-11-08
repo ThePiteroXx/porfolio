@@ -3,7 +3,7 @@ import { Pane } from 'tweakpane'
 import { gsap } from 'gsap'
 
 import Time from '../Utils/Time.js'
-import Resources from './Resources.js'
+import LoadingScreen from '../Loading/LoadingScreen.js'
 import Stats from '../Utils/Stats.js'
 
 import Sizes from './Sizes.js'
@@ -13,7 +13,6 @@ import World from './World.js'
 import Navigation from './Navigation.js'
 import Content from './Content.js'
 
-import assets from './assets.js'
 
 export default class Experience
 {
@@ -29,7 +28,6 @@ export default class Experience
 
         // Options
         this.targetElement = _options.targetElement
-        console.log(this)
         if(!this.targetElement)
         {
             console.warn('Missing \'targetElement\' property')
@@ -37,6 +35,7 @@ export default class Experience
         }
         this.time = new Time()
         this.sizes = new Sizes(this.targetElement)
+        this.loadingScreen = new LoadingScreen()
         this.setConfig()
         this.setStats()
         // this.setDebug()
@@ -46,7 +45,6 @@ export default class Experience
         this.setResources()
         this.setWorld()
         this.setNavigation()
-        this.loadScreen()
         this.setContent()
         
         this.sizes.on('resize', () =>
@@ -110,7 +108,7 @@ export default class Experience
 
     setResources()
     {
-        this.resources = new Resources(assets)
+        this.resources = this.loadingScreen.resources
     }
 
     setWorld()
@@ -121,26 +119,6 @@ export default class Experience
     setNavigation()
     {
         this.navigation = new Navigation()
-    }
-
-
-    loadScreen()
-    {
-        const screenLoad = document.querySelector('.loader')
-        const loaderProgress = document.querySelector('.loader-strip-progress')
-
-        this.resources.on('progress', (_progress) =>
-        {
-            const progress = _progress.loaded / _progress.toLoad
-            loaderProgress.style.transform = `scaleX(${progress})`
-
-            if(progress === 1)
-            {
-                gsap.fromTo(screenLoad, {x: 0}, {x: '100%', ease: 'power3.in' ,duration: 0.6})
-
-            }
-            
-        })
     }
 
     setContent() 

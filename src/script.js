@@ -1,19 +1,24 @@
 import { gsap } from 'gsap'
 import './scss/style.scss'
+import LoadingScreen from './Js/Loading/LoadingScreen.js'
 import Experience from './Js/Experience/Experience.js'
 import About from './Js/skill/About.js'
+import Work from './Js/Work/Work.js'
 
 import fontawsome from '@fortawesome/fontawesome-free/js/fontawesome'
 import '@fortawesome/fontawesome-free/js/solid'
 import '@fortawesome/fontawesome-free/js/regular'
 import '@fortawesome/fontawesome-free/js/brands'
 
+const loadingScreen = new LoadingScreen().init()
 
 const homeCanvas = new Experience({
     targetElement: document.querySelector('.experience')
 })
 
 const skillsCanvas = new About(document.querySelector('.canvas-about'))
+
+const workCanvas = new Work(document.querySelector('.canvas-work'))
 
 let $allNavMobileLink;
 let $navHomeDesktop; 
@@ -90,6 +95,7 @@ const prepareDOMEvents = () =>
     // Change pages with navigation
     $navHomeDesktop.addEventListener('click', () => changePageScene('home'))
     $navAboutDesktop.addEventListener('click', () => changePageScene('about'))
+    $navWorkDesktop.addEventListener('click', () => changePageScene('work'))
     
     $navHomeMobile.addEventListener('click', () => changePageScene('home'))
     $navAboutMobile.addEventListener('click', () => changePageScene('about'))

@@ -2,7 +2,7 @@ $grey: rgb(48, 48, 48);
 $bgc-color: #0b1523;
 $grey-darker: rgb(25, 26, 29);
 $cyan: #00c9c8;
-$cyan-power: #21ceda;
+$cyan-power: #00e3ff;
 $cyan-lighter: #bffcf9;
 $green: rgb(71, 129, 127);
 $green-20: rgba(71, 129, 127, 0.2);
@@ -11,3 +11,4 @@ $paragraf-color: rgb(180, 180, 180);
 
 $alpha-gradient-top: linear-gradient(180deg, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 100%);
 $alpha-gradient-bot: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 1) 100%);
+$cyan-gradient: linear-gradient(90deg, rgb(0, 201, 200) 40%, rgb(33, 206, 218) 100%);

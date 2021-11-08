@@ -1,22 +1,21 @@
 import * as THREE from 'three'
-import EventEmitter from '../Utils//EventEmitter.js'
+import EventEmitter from '../Utils/EventEmitter.js'
 import Loader from '../Utils/Loader.js'
-import Experience from './Experience.js'
+import assets from '../Utils/assets'
 
 export default class Resources extends EventEmitter
 {
-    constructor(_assets)
+    constructor()
     {
         super()
 
         // Items (will contain every resources)
         this.items = {}
-
         // Loader
-        this.loader = new Loader(new Experience())
+        this.loader = new Loader()
 
         this.groups = {}
-        this.groups.assets = [..._assets]
+        this.groups.assets = [...assets]
         this.groups.loaded = []
         this.groups.current = null
         this.loadNextGroup()

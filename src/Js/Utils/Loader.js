@@ -10,12 +10,12 @@ export default class Loader extends EventEmitter
     /**
      * Constructor
      */
-    constructor(mainClassJs)
+    constructor()
     {
         super()
 
-        this.element = mainClassJs
-        this.renderer = this.element.renderer.instance
+        // this.element = mainClassJs
+        // this.renderer = this.element.renderer.instance
 
         this.setLoaders()
 
@@ -55,7 +55,7 @@ export default class Loader extends EventEmitter
          // Basis images
          const basisLoader = new BasisTextureLoader()
          basisLoader.setTranscoderPath('basis/')
-         basisLoader.detectSupport(this.renderer)
+        //  basisLoader.detectSupport(this.renderer)
  
          this.loaders.push({
              extensions: ['basis'],
