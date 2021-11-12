@@ -35,13 +35,12 @@ export default class Work
 
         this.sizes = new Sizes()
         this.time = new Time()
-        this.loadingScreen = new LoadingScreen()
+        this.resources = new LoadingScreen().resources
         this.setConfig()
         this.setStats()
         this.setScene()
         this.setCamera()
         this.setRenderer()
-        this.setResources()
         this.setWorld()
 
         this.sizes.on('resize', () =>
@@ -59,9 +58,9 @@ export default class Work
         this.setConfig()
         this.setStats()
         this.setScene()
+        this.setResources()
         this.setCamera()
         this.setRenderer()
-        this.setResources()
         this.setWorld()
 
         this.sizes.on('resize', () =>
@@ -100,7 +99,6 @@ export default class Work
     setCamera()
     {
         this.camera = new Camera()
-        console.log(this.camera)
     }
 
     setRenderer()
@@ -108,16 +106,11 @@ export default class Work
         this.renderer = new Renderer()
     }
 
-    setResources()
-    {
-        this.resources = this.loadingScreen.resources
-    }
 
     setWorld()
     {
         this.world = new World()
     }
-
 
     update()
     {

@@ -44,6 +44,7 @@ export default class Sizes extends EventEmitter
         else 
         {
             this.width = window.innerWidth / 2
+            this.height = window.innerHeight
         }
 
 

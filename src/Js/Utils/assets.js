@@ -15,7 +15,13 @@ export default [
             { name: 'leftMonitor', source: '/assets/leftMonitor.glb', type: 'model'},
             { name: 'coffeSteam', source: '/assets/coffeSteam.glb', type: 'model'},
             { name: 'painting', source: '/assets/painting.glb', type: 'model'},
-            { name: 'icons', source: '/assets/icons-final.glb', type: 'model' }
+            { name: 'icons', source: '/assets/icons-final.glb', type: 'model' },
+
+            { name: 'flyo', source: '/assets/flyo.jpg', type: 'texture' },
+            { name: 'cook', source: '/assets/cook.jpg', type: 'texture' },
+            { name: 'space', source: '/assets/space.jpg', type: 'texture' },
+            { name: 'tetris', source: '/assets/tetris.jpg', type: 'texture' },
+            { name: 'burash', source: '/assets/burash01.png', type: 'texture' },
         ]
     }   
 ]

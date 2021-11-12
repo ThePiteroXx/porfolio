@@ -47,6 +47,7 @@ export default class Camera
         this.modes.default.instance = this.instance.clone()
         this.modes.default.instance.rotation.reorder('YXZ')
         this.modes.default.instance.position.set(0, 0, 7)
+        this.modes.default.instance.lookAt(0, 0, 0)
 
         // Debug
         this.modes.debug = {}

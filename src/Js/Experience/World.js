@@ -27,16 +27,6 @@ export default class World
 
     }
 
-    setDummy()
-    {
-        const cube = new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshBasicMaterial({ map: this.resources.items.baked })
-        )
-        this.scene.add(cube)   
-        console.log(this.resources)       
-    }
-
     setBaked()
     {
         this.baked = new Baked()
