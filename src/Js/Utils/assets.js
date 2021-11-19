@@ -21,7 +21,6 @@ export default [
             { name: 'cook', source: '/assets/cook.jpg', type: 'texture' },
             { name: 'space', source: '/assets/space.jpg', type: 'texture' },
             { name: 'tetris', source: '/assets/tetris.jpg', type: 'texture' },
-            { name: 'burash', source: '/assets/burash01.png', type: 'texture' },
         ]
     }   
 ]

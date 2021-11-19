@@ -24,13 +24,7 @@ export default class Renderer
     {
         this.clearColor = '#0b1523'
 
-        let antialias;
-
-        if(Math.min(window.devicePixelRatio, 2) < 2) {
-            antialias = true
-        } else {
-            antialias = false
-        }
+        const antialias = Math.min(window.devicePixelRatio, 2) < 2 ? true : false
 
         // Renderer
         this.instance = new THREE.WebGLRenderer({

@@ -5,7 +5,6 @@ uniform vec2 resolution;
 varying vec2 vUv;
 uniform vec2 uMouse;
 uniform float uVelo;
-uniform sampler2D burash;
 
 
 	float circle(vec2 uv, vec2 disc_center, float disc_radius, float border_size) {

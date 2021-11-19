@@ -98,14 +98,11 @@ export default class Renderer
                 "uMouse": { value: new THREE.Vector2(-10,-10) },
                 "uVelo": { value: 0 },
                 "uScale": { value: 0 },
-                "uType": { value: 0 },
-                "time": { value: 0 },
-                "burash": {value: null}
+                "time": { value: 0 }
               },
               vertexShader: vertexShader,
               fragmentShader: fragmentShader
         })
-        this.postProcess.customPass.uniforms.burash.value = this.resources.items.burash
         this.postProcess.composer.addPass(this.postProcess.customPass)
     }
 

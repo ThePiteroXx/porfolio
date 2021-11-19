@@ -33,9 +33,9 @@ export default class Photos
     init()
     {
         this.setImages()
+        this.setScroll()
         this.resize()
         this.setRaycaster()
-        this.setScroll()
     }
 
     setImages() 
@@ -127,28 +127,39 @@ export default class Photos
         this.scroll = {}
         this.scroll.position = 0
         this.scroll.speed =0
+        this.scroll.limit = 0
       
 
         window.addEventListener('wheel', (e)=>{
             this.scroll.speed -= e.deltaY * 0.04
         })
 
-        // on mobile
+        /*
+        * On mobile
+        */
         let start = 0
         const touchStart = (event) => 
         {
             start = event.touches[0].pageY
+            
+            
         }
         
         const touchMove = (event) =>
         {
             const offset = start - event.touches[0].pageY
-            this.scroll.speed -= offset * 0.08
+            this.scroll.speed -= offset * 0.15
             start = event.touches[0].pageY
+
+            //set touch-action: none while we scrolling to prevent refreshing page on mobile 
+            const containerWork = document.querySelector('.work__container')
+            if(this.scroll.position < 0) containerWork.classList.add('touch-action-none')
+            else containerWork.classList.remove('touch-action-none')
         }
 
-        window.addEventListener("touchstart", touchStart, false)
-        window.addEventListener("touchmove", touchMove, false)
+        window.addEventListener("touchstart", touchStart)
+        window.addEventListener("touchmove", touchMove)
+
     }
 
     setRaycaster()
@@ -167,7 +178,6 @@ export default class Photos
 
     resize()
     {
-
         this.imageWidth = this.img.clientWidth 
         this.imageHeight = this.img.clientHeight 
 
@@ -270,17 +280,21 @@ export default class Photos
             }
 
         }
-
+        // Add limit scroll
+        this.lastImg = keys.at(-1)
+        const distanceTop = (this.images[this.lastImg].matrix.f - window.innerHeight) + this.imageHeight
+        this.scroll.limit = distanceTop
+        
     }
 
     update()
     {
         //Add break points scroll
-        if(this.scroll.position >= -500 & this.scroll.position <= 0)
+        if(this.scroll.position >= -this.scroll.limit && this.scroll.position <= 0)
             this.scroll.position += this.scroll.speed
 
         if(this.scroll.position > 0) this.scroll.position = 0
-        if(this.scroll.position <= -500) this.scroll.position = -500
+        if(this.scroll.position <= -this.scroll.limit) this.scroll.position = -this.scroll.limit
 
         this.scroll.speed *= 0.9
         

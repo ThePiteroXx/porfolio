@@ -1,16 +1,23 @@
 .work {
     position: absolute;
     width: 100%;
-    height: 100%;
     top: 0;
     left: 0;
     opacity: 0;
     pointer-events: none;
     overflow: hidden;
 
+    .touch-action-none
+    {
+        touch-action: none;
+    }
+
+    .canvas-work {
+        position: fixed;
+    }
 
     &__container {
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         width: 100%;

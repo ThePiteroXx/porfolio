@@ -99,6 +99,7 @@ const prepareDOMEvents = () =>
     
     $navHomeMobile.addEventListener('click', () => changePageScene('home'))
     $navAboutMobile.addEventListener('click', () => changePageScene('about'))
+    $navWorkMobile.addEventListener('click', () => changePageScene('work'))
 }
 const main = () => {
     prepareDOMElements()

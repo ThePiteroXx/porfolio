@@ -25,11 +25,13 @@ export default class Renderer
     {
         this.clearColor = '#010101'
 
+        const antialias = Math.min(window.devicePixelRatio, 2) < 2 ? true : false
+
         // Renderer
         this.instance = new THREE.WebGLRenderer({
             canvas: this.experience.targetElement,
             alpha: false,
-            antialias: true
+            antialias: antialias
         })
 
         // this.instance.setClearColor(0x414141, 1)
