@@ -24,28 +24,11 @@ export default class Content
     setSelectors()
     {
         this._selectors.lampBtn = document.querySelector('#btnLamp')
-        this._selectors.timer = document.querySelector('#timer')
     }
 
     setFunctions()
     {
-        this._functions.getTime = () => {
-            const now = new Date()
-
-            return {
-                hour: now.getHours(),
-                minute: now.getMinutes()
-            }
-        }
-        
-        this._functions.putTime = () => {
-            const hour = this._functions.getTime().hour.toString()
-            const minute = this._functions.getTime().minute.toString()
-
-            this._selectors.timer.textContent = `${hour.padStart(2, '0')}:${minute.padStart(2, '0')}`
-        }
-
-        setInterval(() => this._functions.putTime(), 1000)
+       
     }
 
     setListeners()

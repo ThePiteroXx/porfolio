@@ -114,7 +114,6 @@ export default class Renderer
         this.targetSpeed = 0
 
         window.addEventListener('mousemove', (event) => {
-            event.preventDefault()
             this.mouse.x =  event.clientX  / window.innerWidth 
             this.mouse.y = - (event.clientY  / window.innerHeight) + 1
         })

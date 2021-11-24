@@ -7,11 +7,12 @@
         }
 
         .canvas-about {
-            margin-top: -5%;
+            position: fixed;
+            top: 0;
+            right: 0;
             width: 50%;
         }
 
-        
         &__content {
             margin: 0 1.9em;
             width: 50%;

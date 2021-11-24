@@ -25,27 +25,19 @@
     <nav>
         <div class="nav-mobile" id="navMobile">
             <ul class="nav-mobile-list">
-                <li id="navHomeMobile"><a href="#"><i class="fas fa-home"></i>Home</a></li>
-                <li id="navAboutMobile"><a href="#about"><i class="fas fa-user" style="margin-right: 21px;"></i>About Me</a></li>
-                <li id="navWorkMobile"><a href="#work"><i class="fas fa-award" style="margin-right: 23.5px;"></i>Work</a></li>
-                <li id="navContactMobile"><a href="#contact"><i class="fas fa-envelope" style="margin-right: 18.5px;"></i>Contact</a></li>
+                <li id="navHomeMobile" class="navLi"><a href="#"><i class="fas fa-home"></i>Home</a></li>
+                <li id="navAboutMobile" class="navLi"><a href="#about"><i class="fas fa-user" style="margin-right: 21px;"></i>About Me</a></li>
+                <li id="navWorkMobile" class="navLi"><a href="#work"><i class="fas fa-award" style="margin-right: 23.5px;"></i>Work</a></li>
+                <li id="navContactMobile" class="navLi"><a href="#contact"><i class="fas fa-envelope" style="margin-right: 18.5px;"></i>Contact</a></li>
             </ul>
-
-            <div class="nav-mobile-time">
-                <p class="autor">&copy; peter skubisz</p>
-                <div class="clock">
-                    <p class="timer" id="timer">12:00</p>
-                    <i class="far fa-clock"></i>
-                </div>
-            </div>
         </div>
 
         <div class="nav-desktop">
             <ul class="nav-desktop-list">
-                <li id="navHomeDesktop"><a href="#"><i class="fas fa-home"></i>Home</a></li>
-                <li id="navAboutDesktop"><a href="#about"><i class="fas fa-user"></i>About Me</a></li>
-                <li id="navWorkDesktop"><a href="#work"><i class="fas fa-award"></i>Work</a></li>
-                <li id="navContactDesktop"><a href="#contact"><i class="fas fa-envelope"></i>Contact</a></li>
+                <li id="navHomeDesktop" class="navLi"><a href="#"><i class="fas fa-home"></i>Home</a></li>
+                <li id="navAboutDesktop" class="navLi"><a href="#about"><i class="fas fa-user"></i>About Me</a></li>
+                <li id="navWorkDesktop" class="navLi"><a href="#work"><i class="fas fa-award"></i>Work</a></li>
+                <li id="navContactDesktop" class="navLi"><a href="#contact"><i class="fas fa-envelope"></i>Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -55,7 +47,7 @@
         <section class="home" id="home">
             <div class="gradient-top"></div>
             <div class="home__content">
-                <h1 class="home__heading">peter skubisz</h1>
+                <h1 class="home__heading" data-heading>peter skubisz</h1>
                 <p class="home__description">New Generation</p>
                 <a href="#"><button class="home__btn"><span>About Me</span></button></a>
             </div>
@@ -78,7 +70,7 @@
         </section>
         <section class="about" id="about">
             <div class="about__content">
-                <h2 class="about__content__heading">About Me</h2>
+                <h2 class="about__content__heading" data-heading>About Me</h2>
                 <div class="about__content__info">
                     <div class="about__content__portret">
                         <div class="border"></div>
@@ -118,7 +110,7 @@
         <section class="work" id="work">
             <canvas class="canvas-work"></canvas>
             <div class="work__container">
-                <!-- <h2 class="work__container__heading">My works</h2> -->
+                <h2 class="work__container__heading" data-heading>My works</h2>
                 <div class="work__container__img-mainOptions"></div>
             </div>
             <div class="work__scroll"></div>

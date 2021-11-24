@@ -23,7 +23,7 @@ module.exports = {
             template: path.resolve(__dirname, '../src/index.html'),
             minify: true
         }),
-        new MiniCSSExtractPlugin()
+        new MiniCSSExtractPlugin(),
     ],
     module:
     {
@@ -51,8 +51,9 @@ module.exports = {
                 use:
                 [
                     MiniCSSExtractPlugin.loader,
-                    'css-loader',
-                    'sass-loader'
+                    "css-loader",
+                    "postcss-loader",
+                    "sass-loader"
                 ]
             },
 

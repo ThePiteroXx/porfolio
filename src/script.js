@@ -10,6 +10,8 @@ import '@fortawesome/fontawesome-free/js/solid'
 import '@fortawesome/fontawesome-free/js/regular'
 import '@fortawesome/fontawesome-free/js/brands'
 
+const charming = require("charming")
+
 const loadingScreen = new LoadingScreen().init()
 
 const homeCanvas = new Experience({
@@ -27,6 +29,7 @@ let $navSkillsDesktop;
 let $navWorkDesktop; 
 let $navContactDesktop;
 
+let $allNavLinks;
 let $allNavDesktopLink;
 let $navHomeMobile;
 let $navAboutMobile; 
@@ -39,6 +42,7 @@ let $navMobile;
 
 let $main;
 let $sections;
+let $headers;
 
 let $home;
 let $about;
@@ -46,6 +50,7 @@ let $work;
 
 let $tl;
 
+let stopNav = false
 
 const prepareDOMElements = () => 
 {
@@ -60,12 +65,14 @@ const prepareDOMElements = () =>
     $navWorkMobile = document.querySelector('#navWorkMobile')
     $navContactMobile = document.querySelector('#navContactMobile')
     $allNavDesktopLink = [...document.querySelectorAll('.nav-desktop-list li')]
+    $allNavLinks = [...document.querySelectorAll('.navLi')]
     
     $navBtn = document.querySelector('#navBtn')
     $navMobile = document.querySelector('#navMobile')
 
     $main = document.querySelector('main')
     $sections = [...$main.children]
+    $headers = document.querySelectorAll('[data-heading]')
 
     $home = document.querySelector('.home')
     $about = document.querySelector('.about')
@@ -86,20 +93,32 @@ const prepareDOMEvents = () =>
 
     //Hide navogation mobile when click li
     $allNavMobileLink.forEach(element => {
+        
         element.addEventListener('click', () => {
             $navBtn.classList.remove('active')
             $navMobile.classList.remove('active')
+            
         })
+        
     })
     
     // Change pages with navigation
-    $navHomeDesktop.addEventListener('click', () => changePageScene('home'))
-    $navAboutDesktop.addEventListener('click', () => changePageScene('about'))
-    $navWorkDesktop.addEventListener('click', () => changePageScene('work'))
-    
-    $navHomeMobile.addEventListener('click', () => changePageScene('home'))
-    $navAboutMobile.addEventListener('click', () => changePageScene('about'))
-    $navWorkMobile.addEventListener('click', () => changePageScene('work'))
+
+    $allNavLinks.forEach(link => {
+        
+        link.addEventListener('click', () => {
+            const isActive = link.classList.contains('active')
+            if(link == $navHomeMobile && !isActive) changePageScene('home')
+            if(link == $navAboutMobile && !isActive) changePageScene('about')
+            if(link == $navWorkMobile && !isActive) changePageScene('work')
+
+            if(link == $navHomeDesktop && !isActive) changePageScene('home')
+            if(link == $navAboutDesktop && !isActive) changePageScene('about')
+            if(link == $navWorkDesktop && !isActive) changePageScene('work')
+            stopNav = true
+        })
+        
+    })
 }
 const main = () => {
     prepareDOMElements()
@@ -166,6 +185,7 @@ const changePageScene = (idScene) => {
             .to(element, 0.5, {opacity: 1, onComplete: () => {
                 $allNavDesktopLink.forEach(element => element.className = ' ')
                 checkHashLocation()
+                stopNav = false
             }})
         }
     })

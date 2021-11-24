@@ -79,6 +79,8 @@ export default class Work
 
         this.config.width = this.sizes.viewport.width
         this.config.height = this.sizes.viewport.height
+
+        this.config.scrollRender = false
         
         this.config.debug = this.config.width > 420
     }

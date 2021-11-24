@@ -128,12 +128,16 @@ export default class Photos
         this.scroll.position = 0
         this.scroll.speed =0
         this.scroll.limit = 0
+        this.scroll.render = this.config.scrollRender
       
 
         window.addEventListener('wheel', (e)=>{
             this.scroll.speed -= e.deltaY * 0.04
         })
 
+        //Restart scroll position
+        const navLinks = [...document.querySelectorAll('.navLi')]
+        navLinks.forEach( link => link.addEventListener('click', () => setTimeout( () => this.scroll.position = 0, 1000)))
         /*
         * On mobile
         */
@@ -169,9 +173,9 @@ export default class Photos
         
         this.mouse = new THREE.Vector2(-100, -100)
         window.addEventListener('mousemove', (e) => {
-            e.preventDefault()
-            this.mouse.x = e.clientX / this.config.width * 2 -1
-            this.mouse.y = - (e.clientY / this.config.height) * 2 + 1
+            
+            this.mouse.x = e.clientX / window.innerWidth * 2 -1
+            this.mouse.y = - (e.clientY / window.innerHeight) * 2 + 1
 
         })
     }
@@ -290,6 +294,7 @@ export default class Photos
     update()
     {
         //Add break points scroll
+            
         if(this.scroll.position >= -this.scroll.limit && this.scroll.position <= 0)
             this.scroll.position += this.scroll.speed
 
@@ -297,6 +302,8 @@ export default class Photos
         if(this.scroll.position <= -this.scroll.limit) this.scroll.position = -this.scroll.limit
 
         this.scroll.speed *= 0.9
+            
+        
         
         for(const key in this.images) {
             const imgSet = this.images[key].domElement
