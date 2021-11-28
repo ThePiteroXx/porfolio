@@ -108,7 +108,7 @@ export default class World
             this.photos.update()
         
         if(this.header)
-            this.header.style.transform = `translate(-50%, ${this.photos.putDistanceY(-0.35, false) + this.photos.scroll.position}px)`
+            this.header.style.transform = `translate(-50%, ${this.photos.putDistanceY(-0.35, false) + this.photos.scroll.position *1.8}px)`
 
         if(this.backgroundScene)
         {

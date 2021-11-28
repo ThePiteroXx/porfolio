@@ -12,7 +12,8 @@ import '@fortawesome/fontawesome-free/js/brands'
 
 const charming = require("charming")
 
-const loadingScreen = new LoadingScreen().init()
+const reousorces = new LoadingScreen().init()
+// reousorces.init()
 
 const homeCanvas = new Experience({
     targetElement: document.querySelector('.experience')
@@ -72,7 +73,7 @@ const prepareDOMElements = () =>
 
     $main = document.querySelector('main')
     $sections = [...$main.children]
-    $headers = document.querySelectorAll('[data-heading]')
+    $headers = [...document.querySelectorAll('[data-heading]')]
 
     $home = document.querySelector('.home')
     $about = document.querySelector('.about')
@@ -84,7 +85,7 @@ const prepareDOMElements = () =>
 const prepareDOMEvents = () =>
 {
     checkHashLocation()
-    
+    $headers.forEach(element => charming(element))
     //Show navigation of mobile
     $navBtn.addEventListener('click', () => {
         $navBtn.classList.toggle('active')
@@ -130,7 +131,7 @@ const main = () => {
 
 const checkHashLocation = () => {
     const setClassVisible = (nameClass) => {
-        $sections.filter(element => {
+        $sections.forEach(element => {
             if(!element.classList.contains(nameClass))
             {
                 element.style.opacity = '0'
@@ -138,7 +139,7 @@ const checkHashLocation = () => {
             }
             else 
             {
-                gsap.to(element, 0.5, {opacity: 1})
+                $tl.to(element, 0.5, {opacity: 1})
                 element.classList.add('is-visible')
             }
         })
@@ -172,9 +173,21 @@ const checkHashLocation = () => {
     }
 }
 
+const setHeaderSpans = (idScene) => 
+{
+    let spans = null
+    $headers.forEach(header => {
+        const attribute = header.getAttribute('data-heading')
+        if(idScene === attribute) spans = [...header.querySelectorAll('span')]
+    })
+
+    return spans
+}
+
 const changePageScene = (idScene) => {
     const oldPageClassName = $main.classList[0].replace('-is-active', '')
     const oldPage = window[oldPageClassName]
+    const spans = setHeaderSpans(idScene)
    
     $main.className = ' '
 
@@ -187,9 +200,10 @@ const changePageScene = (idScene) => {
                 checkHashLocation()
                 stopNav = false
             }})
+            .staggerFromTo(spans, 0.5, {opacity:0}, {opacity:1}, 0.05, '-=0.5')
         }
     })
 }
 
-
 document.addEventListener('DOMContentLoaded', main)
+

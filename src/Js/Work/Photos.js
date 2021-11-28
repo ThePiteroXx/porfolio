@@ -104,6 +104,7 @@ export default class Photos
 
     putDistanceY(y, boolean)
     {
+        const widthBrackets = this.config.height > 500 ? this.config.height : this.config.height * 2
         //if boolean == true calculate y position of webgl object
         // if boolean == false calculate y position dom element
         if(boolean)
@@ -112,6 +113,7 @@ export default class Photos
         }
         return this.config.height * (y + 0.5)
     }
+
 
     putDistanceX(x, boolean)
     {
@@ -214,9 +216,9 @@ export default class Photos
             if(window.innerWidth < this.sizes.mobile)
             {
                 //update position y
-                
+                if(window.innerHeight < 600) distanceY += 0.2
                 this.images[keys[i]].matrix.f = this.putDistanceY(distanceY, false)
-                this.images[keys[i]].cloneMeshPosition.y = - this.putDistanceY(distanceY, true)
+                this.images[keys[i]].cloneMeshPosition.y = - this.putDistanceY(distanceY, true) 
                 distanceY += 0.4
                 //update position x
                 this.images[keys[i]].matrix.e = this.putDistanceX(distanceX, false)
@@ -233,6 +235,7 @@ export default class Photos
             {
                 if(i % 2) {
                     //update position y
+                    
                     this.images[keys[i]].matrix.f = this.putDistanceY(distanceY, false)
                     this.images[keys[i]].cloneMeshPosition.y = - this.putDistanceY(distanceY, true)
                     distanceY += 0.45
@@ -244,10 +247,11 @@ export default class Photos
                     if(window.innerHeight < 600)
                     {
                         distanceY += 0.3
-                        if(window.innerHeight < 260) distanceY += 0.3
+                        if(window.innerHeight < 260) distanceY += 0.5
                     }
                 } else {
                     //update position y
+                    if(window.innerHeight < 600) distanceY += 0.2
                     this.images[keys[i]].matrix.f = this.putDistanceY(distanceY, false)
                     this.images[keys[i]].cloneMeshPosition.y = - this.putDistanceY(distanceY, true)
                     //update position x
@@ -272,7 +276,7 @@ export default class Photos
                     }
                 }
                 if(!(i % 3)) distanceX = -0.3
-        
+                if(!(i % 3) && window.innerHeight < 600) distanceY += 0.2
                 //update position y
                 this.images[keys[i]].matrix.f = this.putDistanceY(distanceY, false)
                 this.images[keys[i]].cloneMeshPosition.y = - this.putDistanceY(distanceY, true)
@@ -282,6 +286,7 @@ export default class Photos
                 distanceX += 0.3
                 
             }
+
 
         }
         // Add limit scroll
