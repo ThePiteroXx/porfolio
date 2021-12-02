@@ -1,10 +1,11 @@
 .about {
     padding-top: 9em;
     position: absolute;
-    width: 100%;
-    height: 100%;
+    display: none;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
     opacity: 0;
     color: $creame;
     background-color: $bgc-color;
@@ -41,30 +42,7 @@
             }
         }
         
-        &__heading {
-            position: relative;
-            font-size: 4.3rem;
-
-            &::before {
-                position: absolute;
-                top: 40%;
-                right: -80px;
-                content: '';
-                width: 70px;
-                height: 2px;
-                background-color: $creame;
-            }
-
-            &::after{
-                position: absolute;
-                top: 40%;
-                left: -80px;
-                content: '';
-                width: 70px;
-                height: 2px;
-                background-color: $creame;
-            }
-        }
+        
 
         &__portret {
             position: relative;

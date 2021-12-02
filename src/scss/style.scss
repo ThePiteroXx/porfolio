@@ -24,21 +24,42 @@ html
 }
 body
 { 
-    background-color: #000;
-    overflow: hidden;
+    background-color: $bgc-color;
+    font-family: 'Calibre';
+    font-weight: 400;
+    color: $creame;
 }
 h3, h4 {
     font-family: 'Playfair Display', serif;
 }
-h2 {
+
+
+.heading {
+    position: relative;
     font-family: 'Calibre';
+    font-size: 4rem;
     font-weight: 600;
-    color: $cyan
-}
-p {
-    font-family: 'Calibre';
-    font-weight: 400;
-    color: $paragraf-color
+    color: $cyan;
+    
+    &::before {
+        position: absolute;
+        top: 40%;
+        right: -80px;
+        content: '';
+        width: 70px;
+        height: 2px;
+        background-color: $creame;
+    }
+    
+    &::after{
+        position: absolute;
+        top: 40%;
+        left: -80px;
+        content: '';
+        width: 70px;
+        height: 2px;
+        background-color: $creame;
+    }
 }
 
 .loader {
@@ -203,10 +224,18 @@ main {
 @import './home/style.scss';
 @import './about/style.scss';
 @import './work/style.scss';
+@import './contact/style.scss';
 
 .is-visible {
+    display: flex;
     pointer-events: all;
 }
+@media screen and (min-width: 656px) {
+    .heading {
+        font-size: 4.5rem;
+    }
+}
+
 @media screen and (min-width: 1400px) {
     .nav-hamburger, .nav-mobile {
         display: none;
@@ -272,6 +301,9 @@ main {
 }
 
 @media screen and (min-width: 2000px) {
+    .heading {
+        font-size: 5vh;
+    }
     .nav-desktop {
         &-list {
             li {

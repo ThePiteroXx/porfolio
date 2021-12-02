@@ -12,7 +12,7 @@ export default class Sizes extends EventEmitter
         this.targetElemet = element
         this.width = window.innerWidth
         this.height = window.innerHeight
-        this.desktopSize = 1400
+        // this.desktopSize = 1400
 
         // Canvas size
         this.viewport = {}
@@ -53,27 +53,27 @@ export default class Sizes extends EventEmitter
 
     }
 
-    checkSize() 
-    {
-        if(this.width < this.desktopSize)
-        {
-            this.targetElemet.classList.remove('desktop')
-            if(this.targetElemet.classList.contains('mobile')) return
+    // checkSize() 
+    // {
+    //     if(this.width < this.desktopSize)
+    //     {
+    //         this.targetElemet.classList.remove('desktop')
+    //         if(this.targetElemet.classList.contains('mobile')) return
                 
-            this.sizeViewport.style.width = '100vw'
-            this.sizeViewport.style.height = '90vh'
-            this.targetElemet.classList.add('mobile')
-        } 
-        else 
-        {
-            this.targetElemet.classList.remove('mobile')
-            if(this.targetElemet.classList.contains('desktop')) return
+    //         this.sizeViewport.style.width = '100vw'
+    //         this.sizeViewport.style.height = '90vh'
+    //         this.targetElemet.classList.add('mobile')
+    //     } 
+    //     else 
+    //     {
+    //         this.targetElemet.classList.remove('mobile')
+    //         if(this.targetElemet.classList.contains('desktop')) return
 
-            this.sizeViewport.style.width = '60vw'
-            this.sizeViewport.style.height = '90vh'
-            this.targetElemet.classList.add('desktop')
-        }
-    }
+    //         this.sizeViewport.style.width = '60vw'
+    //         this.sizeViewport.style.height = '90vh'
+    //         this.targetElemet.classList.add('desktop')
+    //     }
+    // }
 
 
 }

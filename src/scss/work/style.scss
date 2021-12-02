@@ -26,27 +26,6 @@
         &__heading {
             position: absolute;
             left: 50%;
-            font-size: 4.5rem;
-    
-            &::before {
-                position: absolute;
-                top: 40%;
-                right: -80px;
-                content: '';
-                width: 70px;
-                height: 2px;
-                background-color: $creame;
-            }
-    
-            &::after{
-                position: absolute;
-                top: 40%;
-                left: -80px;
-                content: '';
-                width: 70px;
-                height: 2px;
-                background-color: $creame;
-            }
         }
 
         &__img-mainOptions {
@@ -70,24 +49,21 @@
             position: absolute;
             font-family: 'Big Shoulders Stencil Display', cursive;
             color: $creame;
-            
-            &:hover {
-                cursor: pointer;
-            }
+            cursor: pointer;
 
             .title {
                 position: absolute;
                 left: 0;
                 bottom: calc(-25px - 5%);
                 text-transform: uppercase;
-                font-size: 25px;
+                font-size: 2.5rem;
             }
             .desc {
                 position: absolute;
                 left: 0;
                 bottom: calc(-50px - 5%);
                 font-family: Calibre;
-                font-size: 18px;
+                font-size: 1.8rem;
                 color: $green;
                 text-transform: uppercase;
             }
@@ -95,7 +71,7 @@
                 position: absolute;
                 top: -20px;
                 right: -10px;
-                font-size: 30px;
+                font-size: 3rem;
  
             }
 
@@ -130,9 +106,31 @@
 
             &__img-mainOptions{
                 width: 25%;
-                height: 25%;
-                min-width: 350px;
-                min-height: 200px;
+                height: 15vw;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 2000px) {
+    .work{
+        &__container {
+
+            &__img-mainOptions{
+                max-width: none;
+                max-height: none;
+            }
+
+            &__img-in {
+                .title {
+                    bottom: calc(-3vh - 5%);
+                    font-size: 3vh; 
+                }
+
+                .desc {
+                    bottom: calc(-2.5vh - 3vh - 6%);
+                    font-size: 2.5vh;
+                }
             }
         }
     }

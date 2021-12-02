@@ -52,7 +52,7 @@
                 <a href="#"><button class="home__btn"><span>About Me</span></button></a>
             </div>
 
-            <canvas class="experience"></canvas>
+            <canvas class="canvas-home"></canvas>
             <div class="gradient-bot"></div>
                
             <div class="home__media">
@@ -70,20 +70,20 @@
         </section>
         <section class="about" id="about">
             <div class="about__content">
-                <h2 class="about__content__heading" data-heading="about">About Me</h2>
-                <div class="about__content__info">
+                <h2 class="heading" data-heading="about">About Me</h2>
+                <div class="about__content__info" data-description="about">
                     <div class="about__content__portret">
                         <div class="border"></div>
                         <img src="../static/assets/portret.jpg" alt="myself" class="img">
                     </div>
                     <p class="text-info">Hello! My name is Peter. I'm 19 years old and I enjoy creating "modern" website.</p>
                 </div>
-                <p class="about__content__text">I learn new things quickly and try to do everything precisely. I'm very motivated to learn more. </p>
-                <p class="about__content__text">For some time programming has become my main passion. The second hobby is train in the gym. I always follow my goals and I am consistent in doing so. I started my adventure with front-end development from the beginning of 2021</p>
-                <p class="about__content__text">If you wanna know more about me write me <a href="#contact">contact</a></p>
-                <p class="about__content__text">Here are some of the technologies I have worked with up to this moment:</p>
+                <p class="about__content__text" data-description="about">I learn new things quickly and try to do everything precisely. I'm very motivated to learn more. </p>
+                <p class="about__content__text" data-description="about">For some time programming has become my main passion. The second hobby is train in the gym. I always follow my goals and I am consistent in doing so. I started my adventure with front-end development from the beginning of 2021</p>
+                <p class="about__content__text" data-description="about">If you wanna know more about me write me <a href="#contact">contact</a></p>
+                <p class="about__content__text" data-description="about">Here are some of the technologies I have worked with up to this moment:</p>
 
-                <div class="about__content__skill">
+                <div class="about__content__skill" data-description="about">
                     <div class="about__content__skill-container">
                         <p class="about__content__skill-heading">Front-end:</p>
                         <ul class="about__content__skill-list">
@@ -94,7 +94,7 @@
                             <li>Webpack / Gulp <div class="strip-of-level strip-of-level--bundler"></div></li>
                         </ul>
                     </div>
-                    <div class="about__content__skill-container">
+                    <div class="about__content__skill-container" data-description="about">
                         <p class="about__content__skill-heading">Design:</p>
                         <ul class="about__content__skill-list">
                             <li>Blender <div class="strip-of-level strip-of-level--blender"></div></li>
@@ -103,24 +103,48 @@
                 </div>
             </div>
            
-            <canvas class="canvas-about"></canvas>
+            <canvas class="canvas-about" data-canvas="about"></canvas>
             
         </section>
 
         <section class="work" id="work">
-            <canvas class="canvas-work"></canvas>
+            <canvas class="canvas-work" data-canvas="work"></canvas>
             <div class="work__container">
-                <h2 class="work__container__heading" data-heading="work">My works</h2>
+                <h2 class="work__container__heading heading" data-heading="work">My works</h2>
                 <div class="work__container__img-mainOptions"></div>
             </div>
-            <div class="work__scroll"></div>
+        </section>
+
+        <section class="contact" id="contact">
+            <div class="contact__container contact__container--left">
+                <h2 class="contact__heading heading" data-heading="contact">Contact</h2>
+                <p class="contact__text">I am open to different job offers and projects. If you have any questions and requests - Fill out the form and write message to me.</p>
+                <form class="contact__form" action="">
+                    <div class="contact__form__box">
+                        <input type="text" name="contact-name" class="contact__input" id="contact-name" required>
+                        <label class="contact__label" for="contact-name">First name</label>
+                    </div>  
+                    <div class="contact__form__box">
+                        <input type="email" name="contact-email" class="contact__input" id="contact-email" required>
+                        <label class="contact__label" for="contact-email">Email</label>
+                    </div>  
+                    <div class="contact__form__box">
+                        <textarea name="contact-msg" class="contact__area" id="contact-msg" cols="30" rows="10" required></textarea>
+                        <label class="contact__label" for="contact-msg">Message</label>
+                    </div>
+                    <button type="submit" name="contact-submit" class="contact__btn">Send</button>
+                </form>
+        </div>
+        <div class="contact__container contact__container--right">
+            <img src="../static/assets/mail-ilustration.svg" alt="man with an envelope" class="contact__ilustration">
+        </div>
         </section>
     </main>
     
        
     
     <div class="loader">
-        <h2 class="loader-heading">Loading...</h2>
+        <h4 class="loader-heading">Loading...</h4>
         <div class="loader-strip">
             <div class="loader-strip-progress"></div>
         </div>

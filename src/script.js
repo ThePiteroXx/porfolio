@@ -12,11 +12,11 @@ import '@fortawesome/fontawesome-free/js/brands'
 
 const charming = require("charming")
 
-const reousorces = new LoadingScreen().init()
-// reousorces.init()
+const loadingScreen = new LoadingScreen()
+loadingScreen.init()
 
 const homeCanvas = new Experience({
-    targetElement: document.querySelector('.experience')
+    targetElement: document.querySelector('.canvas-home')
 })
 
 const skillsCanvas = new About(document.querySelector('.canvas-about'))
@@ -44,6 +44,7 @@ let $navMobile;
 let $main;
 let $sections;
 let $headers;
+let $descriptionHome;
 
 let $home;
 let $about;
@@ -74,6 +75,7 @@ const prepareDOMElements = () =>
     $main = document.querySelector('main')
     $sections = [...$main.children]
     $headers = [...document.querySelectorAll('[data-heading]')]
+    $descriptionHome = document.querySelector('.home__description')
 
     $home = document.querySelector('.home')
     $about = document.querySelector('.about')
@@ -86,6 +88,7 @@ const prepareDOMEvents = () =>
 {
     checkHashLocation()
     $headers.forEach(element => charming(element))
+    charming($descriptionHome)
     //Show navigation of mobile
     $navBtn.addEventListener('click', () => {
         $navBtn.classList.toggle('active')
@@ -112,10 +115,12 @@ const prepareDOMEvents = () =>
             if(link == $navHomeMobile && !isActive) changePageScene('home')
             if(link == $navAboutMobile && !isActive) changePageScene('about')
             if(link == $navWorkMobile && !isActive) changePageScene('work')
+            if(link == $navContactMobile && !isActive) changePageScene('contact')
 
             if(link == $navHomeDesktop && !isActive) changePageScene('home')
             if(link == $navAboutDesktop && !isActive) changePageScene('about')
             if(link == $navWorkDesktop && !isActive) changePageScene('work')
+            if(link == $navContactDesktop && !isActive) changePageScene('contact')
             stopNav = true
         })
         
@@ -139,7 +144,7 @@ const checkHashLocation = () => {
             }
             else 
             {
-                $tl.to(element, 0.5, {opacity: 1})
+                $tl.to(element, 1, {opacity: 1})
                 element.classList.add('is-visible')
             }
         })
@@ -185,22 +190,22 @@ const setHeaderSpans = (idScene) =>
 }
 
 const changePageScene = (idScene) => {
+    if(!$main.classList[0]) return
     const oldPageClassName = $main.classList[0].replace('-is-active', '')
     const oldPage = window[oldPageClassName]
-    const spans = setHeaderSpans(idScene)
    
     $main.className = ' '
 
     $sections.forEach(element => {
         const idSection = element.attributes.id.value
         if(idScene === idSection){
-            $tl.to(oldPage, 1, {opacity: 0})
+            $allNavDesktopLink.forEach(element => element.className = '')
+            $tl
+            .to(oldPage, 1, {opacity: 0})
             .to(element, 0.5, {opacity: 1, onComplete: () => {
-                $allNavDesktopLink.forEach(element => element.className = ' ')
                 checkHashLocation()
                 stopNav = false
             }})
-            .staggerFromTo(spans, 0.5, {opacity:0}, {opacity:1}, 0.05, '-=0.5')
         }
     })
 }
