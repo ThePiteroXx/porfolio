@@ -6,6 +6,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Source+Sans+Pro:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
 
 
 
@@ -28,6 +29,7 @@ body
     font-family: 'Calibre';
     font-weight: 400;
     color: $creame;
+    overflow-x: hidden;
 }
 h3, h4 {
     font-family: 'Playfair Display', serif;
@@ -37,7 +39,7 @@ h3, h4 {
 .heading {
     position: relative;
     font-family: 'Calibre';
-    font-size: 4rem;
+    font-size: 5rem;
     font-weight: 600;
     color: $cyan;
     
@@ -297,7 +299,9 @@ main {
         }
     }
 
-
+    .heading {
+        font-size: 6rem;
+    }
 }
 
 @media screen and (min-width: 2000px) {

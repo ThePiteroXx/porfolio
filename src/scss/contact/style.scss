@@ -13,6 +13,15 @@
     overflow-y: auto;
     overflow-x: hidden;
 
+    &__heading {
+        margin-top: 2em;
+        font-family: 'Calibre';
+        font-weight: 600;
+        font-size: 5rem;
+        color: $cyan;
+        line-height: 36px;
+    }
+
     &__text {
         margin: 1.5em 0;
         font-size: 1.7rem;
@@ -73,6 +82,7 @@
     }
 
     &__area {
+        padding-top: 1em;
         max-width: 100%;
         min-width: 100%;
         min-height: 100px;
