@@ -53,7 +53,13 @@ module.exports = {
                     MiniCSSExtractPlugin.loader,
                     "css-loader",
                     "postcss-loader",
-                    "sass-loader"
+                    "resolve-url-loader",
+                    {
+                        loader: "sass-loader",
+                        options: {
+                            sourceMap: true,
+                        }
+                    }
                 ]
             },
 
@@ -64,7 +70,7 @@ module.exports = {
                 generator:
                 {
                     filename: 'assets/images/[hash][ext]'
-                }
+                },
             },
 
             // Fonts
