@@ -1,9 +1,10 @@
 import { gsap } from 'gsap'
 import './scss/style.scss'
-import LoadingScreen from './Js/Loading/LoadingScreen.js'
-import Experience from './Js/Experience/Experience.js'
-import About from './Js/skill/About.js'
+import LoadingScreen from './Js/LoadingScreen/LoadingScreen.js'
+import Home from './Js/Home/Home.js'
+import About from './Js/About/About.js'
 import Work from './Js/Work/Work.js'
+import Contact from './Js/Contact/Contact.js'
 
 import fontawsome from '@fortawesome/fontawesome-free/js/fontawesome'
 import '@fortawesome/fontawesome-free/js/solid'
@@ -15,7 +16,8 @@ const charming = require("charming")
 const loadingScreen = new LoadingScreen()
 loadingScreen.init()
 
-const homeCanvas = new Experience({
+const contact = new Contact()
+const homeCanvas = new Home({
     targetElement: document.querySelector('.canvas-home')
 })
 
@@ -26,7 +28,6 @@ const workCanvas = new Work(document.querySelector('.canvas-work'))
 let $allNavMobileLink;
 let $navHomeDesktop; 
 let $navAboutDesktop;
-let $navSkillsDesktop; 
 let $navWorkDesktop; 
 let $navContactDesktop;
 
@@ -34,7 +35,6 @@ let $allNavLinks;
 let $allNavDesktopLink;
 let $navHomeMobile;
 let $navAboutMobile; 
-let $navSkillsMobile;
 let $navWorkMobile;
 let $navContactMobile;
 
@@ -52,7 +52,6 @@ let $work;
 
 let $tl;
 
-let stopNav = false
 
 const prepareDOMElements = () => 
 {
@@ -87,15 +86,18 @@ const prepareDOMElements = () =>
 const prepareDOMEvents = () =>
 {
     checkHashLocation()
+
+    // charming headers, desc
     $headers.forEach(element => charming(element))
     charming($descriptionHome)
+
     //Show navigation of mobile
     $navBtn.addEventListener('click', () => {
         $navBtn.classList.toggle('active')
         $navMobile.classList.toggle('active')
     })
 
-    //Hide navogation mobile when click li
+    //Hide navogation mobile when click link
     $allNavMobileLink.forEach(element => {
         
         element.addEventListener('click', () => {
@@ -112,16 +114,17 @@ const prepareDOMEvents = () =>
         
         link.addEventListener('click', () => {
             const isActive = link.classList.contains('active')
+            // mobile
             if(link == $navHomeMobile && !isActive) changePageScene('home')
             if(link == $navAboutMobile && !isActive) changePageScene('about')
             if(link == $navWorkMobile && !isActive) changePageScene('work')
             if(link == $navContactMobile && !isActive) changePageScene('contact')
 
+            // dektop
             if(link == $navHomeDesktop && !isActive) changePageScene('home')
             if(link == $navAboutDesktop && !isActive) changePageScene('about')
             if(link == $navWorkDesktop && !isActive) changePageScene('work')
             if(link == $navContactDesktop && !isActive) changePageScene('contact')
-            stopNav = true
         })
         
     })
@@ -137,22 +140,23 @@ const main = () => {
 const checkHashLocation = () => {
     const setClassVisible = (nameClass) => {
         $sections.forEach(element => {
-            if(!element.classList.contains(nameClass))
+            if(element.classList.contains(nameClass))
             {
-                element.style.opacity = '0'
-                element.classList.remove('is-visible')
+                element.style.opacity = '1'
+                element.classList.add('is-visible')
             }
             else 
             {
-                $tl.to(element, 1, {opacity: 1})
-                element.classList.add('is-visible')
+                element.style.opacity = '0'
+                element.classList.remove('is-visible')
             }
         })
     }
 
     const hash = location.hash
     $main.className = ' '
-    if(hash === '#home' || hash === '')
+
+    if(hash === '#home' || hash === '' || hash === '#home-stats')
     {
         $main.classList.add('home-is-active')
         $navHomeDesktop.classList.add('active')
@@ -178,36 +182,26 @@ const checkHashLocation = () => {
     }
 }
 
-const setHeaderSpans = (idScene) => 
-{
-    let spans = null
-    $headers.forEach(header => {
-        const attribute = header.getAttribute('data-heading')
-        if(idScene === attribute) spans = [...header.querySelectorAll('span')]
-    })
-
-    return spans
-}
-
 const changePageScene = (idScene) => {
     if(!$main.classList[0]) return
-    const oldPageClassName = $main.classList[0].replace('-is-active', '')
-    const oldPage = window[oldPageClassName]
+    const previousPageClassName = $main.classList[0].replace('-is-active', '')
+    const previousPage = window[previousPageClassName]
    
     $main.className = ' '
 
-    $sections.forEach(element => {
-        const idSection = element.attributes.id.value
-        if(idScene === idSection){
-            $allNavDesktopLink.forEach(element => element.className = '')
-            $tl
-            .to(oldPage, 1, {opacity: 0})
-            .to(element, 0.5, {opacity: 1, onComplete: () => {
-                checkHashLocation()
-                stopNav = false
-            }})
-        }
-    })
+    const foundSection = $sections.find(section => section.attributes.id.value === idScene)
+
+    if(foundSection) {
+        // remove classes from nav links
+        $allNavDesktopLink.forEach(element => element.className = '')
+        
+        // set transition
+        $tl
+        .to(previousPage, 1, {opacity: 0})
+        .to(foundSection, 0.5, {opacity: 1, onComplete: () => {
+            checkHashLocation()
+        }})
+    }
 }
 
 document.addEventListener('DOMContentLoaded', main)
