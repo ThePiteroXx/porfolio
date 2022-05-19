@@ -14,9 +14,6 @@ export default class Loader extends EventEmitter
     {
         super()
 
-        // this.element = mainClassJs
-        // this.renderer = this.element.renderer.instance
-
         this.setLoaders()
 
         this.toLoad = 0

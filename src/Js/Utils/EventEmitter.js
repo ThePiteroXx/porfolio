@@ -31,7 +31,7 @@ export default class
 
         // Resolve names
         const names = this.resolveNames(_names)
-
+        
         // Each name
         names.forEach(function(_name)
         {

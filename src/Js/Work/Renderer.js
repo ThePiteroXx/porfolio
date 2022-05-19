@@ -11,16 +11,16 @@ export default class Renderer
 {
     constructor()
     {
-        this.work = new Work()
-        this.targetElement = this.work.targetElement
-        this.resources = this.work.resources
-        this.config = this.work.config
-        this.debug = this.work.debug
-        this.stats = this.work.stats
-        this.time = this.work.time
-        this.sizes = this.work.sizes
-        this.scene = this.work.scene
-        this.camera = this.work.camera
+        const work = new Work()
+        this.targetElement = work.targetElement
+        this.resources = work.resources
+        this.config = work.config
+        this.debug = work.debug
+        this.stats = work.stats
+        this.time = work.time
+        this.sizes = work.sizes
+        this.scene = work.scene
+        this.camera = work.camera
         this.usePostprocess = true
         this.setInstance()
         this.setPostProcess()
@@ -35,7 +35,7 @@ export default class Renderer
 
         // Renderer
         this.instance = new THREE.WebGLRenderer({
-            canvas: this.work.targetElement,
+            canvas: this.targetElement,
             alpha: false,
             antialias: false
         })
@@ -117,14 +117,6 @@ export default class Renderer
             this.mouse.x =  event.clientX  / window.innerWidth 
             this.mouse.y = - (event.clientY  / window.innerHeight) + 1
         })
-
-        // window.addEventListener('touchstart', (event) => {
-        //     const rect = event.target.getBoundingClientRect()
-        //     this.mouse.x =  (event.touches[0].clientX - rect.left) / this.width * 2 - 1
-        //     this.mouse.y = - ((event.touches[0].clientY - rect.top) / this.height) * 2 + 1
-        // }, {passive: false})
-
-
     }
 
     resize()

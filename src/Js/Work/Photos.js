@@ -104,7 +104,6 @@ export default class Photos
 
     putDistanceY(y, boolean)
     {
-        const widthBrackets = this.config.height > 500 ? this.config.height : this.config.height * 2
         //if boolean == true calculate y position of webgl object
         // if boolean == false calculate y position dom element
         if(boolean)
@@ -308,8 +307,6 @@ export default class Photos
 
         this.scroll.speed *= 0.9
             
-        
-        
         for(const key in this.images) {
             const imgSet = this.images[key].domElement
             const imgIn = imgSet.children[0]

@@ -3,14 +3,13 @@ import * as THREE from 'three'
 import Stats from '../Utils/Stats.js'
 import Time from '../Utils/Time.js'
 
-import Resources from '../Resources.js'
-
 import Sizes from './Sizes.js'
 import World from './World.js'
-import Camera from './Camera.js'
+import Resources from '../Resources.js'
+
 import Renderer from './Renderer.js'
 
-export default class Work
+export default class About
 {
 
     static instance
@@ -18,11 +17,11 @@ export default class Work
     constructor(targetElement)
     {
         
-        if(Work.instance)
+        if(About.instance)
         {
-            return Work.instance
+            return About.instance
         }
-        Work.instance = this
+        About.instance = this
 
         this.targetElement = targetElement
         
@@ -37,10 +36,10 @@ export default class Work
         this.time = new Time()
         this.setConfig()
         this.setStats()
-        this.resources = new Resources()
         this.scene = new THREE.Scene()
-        this.camera = new Camera()
+        this.setCamera()
         this.renderer = new Renderer()
+        this.resources = new Resources()
         this.world = new World()
 
         this.sizes.on('resize', () =>
@@ -50,7 +49,6 @@ export default class Work
 
         this.update()
     }
-
     
     setConfig()
     {
@@ -58,10 +56,8 @@ export default class Work
 
         this.config.pixelRatio = Math.min(Math.max(window.devicePixelRatio, 1), 2)
 
-        this.config.width = this.sizes.viewport.width
-        this.config.height = this.sizes.viewport.height
-
-        this.config.scrollRender = false
+        this.config.width = this.sizes.width
+        this.config.height = this.sizes.height
         
         this.config.debug = this.config.width > 420
     }
@@ -74,11 +70,19 @@ export default class Work
         }
     }
 
+    setCamera()
+    {
+        this.camera = new THREE.PerspectiveCamera(45, this.config.width / this.config.height, 0.1, 100)
+        this.camera.position.x = 0
+        this.camera.position.y = 0.3
+        this.camera.position.z = 7
+
+        this.scene.add(this.camera)
+    }
+
     update()
     {
         this.renderer.update()
-
-        this.camera.update()
 
         if(this.world)
             this.world.update()
@@ -96,20 +100,21 @@ export default class Work
         this.config.height = this.sizes.height
 
         // Update camera
-        if(this.camera)
-            this.camera.resize()
+        this.camera.aspect = this.config.width / this.config.height
+        this.camera.updateProjectionMatrix()
         
         // Update renderer
         if(this.renderer)
             this.renderer.resize()
 
-        if(this.world)
-            this.world.resize()
-
     }
 
     destructor()
     {
-       
+        this.time.off('tick')
+        this.sizes.off('resize')
+
+        this.renderer.destroy()
+        this.world.destroy()
     }
 }

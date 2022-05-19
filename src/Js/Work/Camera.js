@@ -4,16 +4,16 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
 export default class Camera
 {
-    constructor(_options)
+    constructor()
     {
         // Options
-        this.work = new Work()
-        this.config = this.work.config
-        this.debug = this.work.debug
-        this.time = this.work.time
-        this.sizes = this.work.sizes
-        this.targetElement = this.work.targetElement
-        this.scene = this.work.scene
+        const work = new Work()
+        this.config = work.config
+        this.debug = work.debug
+        this.time = work.time
+        this.sizes = work.sizes
+        this.targetElement = work.targetElement
+        this.scene = work.scene
 
         // Set up
         this.mode = 'default' // defaultCamera \ debugCamera

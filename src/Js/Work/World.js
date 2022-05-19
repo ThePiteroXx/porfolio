@@ -9,12 +9,12 @@ export default class World
 {
     constructor(_options)
     {
-        this.work = new Work()
-        this.resources = this.work.resources
-        this.config = this.work.config
-        this.scene = this.work.scene
-        this.renderer = this.work.renderer.instance
-        this.time = this.work.time
+        const work = new Work()
+        this.resources = work.resources
+        this.config = work.config
+        this.scene = work.scene
+        this.renderer = work.renderer.instance
+        this.time = work.time
      
         this.resources.on('groupEnd', (_group) =>
         {
