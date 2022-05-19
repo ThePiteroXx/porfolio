@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Three.js - Template - Complex</title>
+    <title>Peter Skubisz</title>
 
 </head>
 <body>
@@ -48,8 +48,8 @@
             <div class="gradient-top"></div>
             <div class="home__content">
                 <h1 class="home__heading" data-heading="home">peter skubisz</h1>
-                <p class="home__description">New Generation</p>
-                <a href="#"><button class="home__btn"><span>About Me</span></button></a>
+                <p class="home__description">Front-end developer</p>
+                <a href="#" class="home__btn">About Me</a>
             </div>
 
             <canvas class="canvas-home"></canvas>
@@ -116,96 +116,38 @@
         </section>
 
         <section class="contact" id="contact">
-            <h2 class="contact__heading" data-heading="contact">Do you have any question?</h2>
-            <div class="contact__main-container">
-
-                <div class="contact__container contact__container--left">
+            
+            
+            <div class="contact__container contact__container--left">
+                    <h2 class="contact__heading" data-heading="contact">Do you have any question?</h2>
                     <p class="contact__text">I am open to different job offers and projects. If you have any questions and requests - Fill out the form and write message to me.</p>
-                    <form class="contact__form" action="">
+                    <form class="contact__form" id="contact-form">
                         <div class="contact__form__box">
-                            <input type="text" name="contact-name" class="contact__input" id="contact-name" required>
+                            <input type="text" name="from_name" class="contact__input" id="contact-name" placeholder=" ">
                             <label class="contact__label" for="contact-name">First name</label>
                         </div>  
                         <div class="contact__form__box">
-                            <input type="email" name="contact-email" class="contact__input" id="contact-email" required>
+                            <input type="email" name="email" class="contact__input" id="contact-email" placeholder=" ">
                             <label class="contact__label" for="contact-email">Email</label>
                         </div>  
                         <div class="contact__form__box">
-                            <textarea name="contact-msg" class="contact__area" id="contact-msg" cols="30" rows="10" required></textarea>
+                            <textarea name="message" class="contact__area" id="contact-msg" cols="30" rows="10" placeholder=" "></textarea>
                             <label class="contact__label" for="contact-msg">Message</label>
                         </div>
-                        <button type="submit" name="contact-submit" class="contact__btn">Send Message</button>
+                        <p class="contact__form__communique" id="contact-communique"> </p>
+                        <button type="submit" name="contact-submit" class="contact__btn" id="contact-btn">Send Message</button>
                     </form>
                 </div>
                 <div class="contact__container contact__container--right">
-                    <svg class="contact__svg" version="1.1" id="envelope" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                        viewBox="0 0 236 371" style="enable-background:new 0 0 236 371;" xml:space="preserve">
-                    <style type="text/css">
-                        .st0{fill:#447C7A;}
-                        .st1{fill:#2B4F4D;}
-                        .st2{fill:#989898;}
-                        .st3{fill:#F2F2F2;}
-                        .st4{fill:#284847;}
-                        .st5{fill:#457D7B;}
-                    </style>
-                    <g id="upEnvelope">
-                        <g>
-                            <polygon class="st0" points="120.04,12.63 121.1,13.62 122.25,14.6 125.12,19.52 223.68,199.27 227.43,206.12 228.81,208.9 
-                                229.26,210.76 229.26,212.12 228.07,214.28 164.48,250.96 74.39,198.95 26.1,115.4 12.79,92.34 11.29,89.37 10.4,87.18 
-                                10.05,85.57 10.05,84.23 10.4,83.05 13.33,80.74 107.59,18.49 115.24,13.43 117.56,11.58 118.84,12.14 		"/>
-                        </g>
-                        <polygon class="st1" points="232.33,206.85 230.95,204.07 227.2,197.22 128.64,17.47 125.77,12.56 124.63,11.58 123.56,10.59 
-                            122.37,10.09 121.08,9.53 117.56,11.58 118.84,12.14 120.04,12.63 121.1,13.62 122.25,14.6 125.12,19.52 223.68,199.27 
-                            227.43,206.12 228.81,208.9 229.26,210.76 229.26,212.12 228.07,214.28 231.6,212.23 232.78,210.08 232.78,208.71 	"/>
-                    </g>
-                    <g id="paper">
-                        <polygon class="st2" points="26.65,5.26 25.94,5.67 206.85,110.12 206.35,283.74 207.06,283.33 207.55,109.71 	"/>
-                        <g>
-                            <polygon class="st3" points="206.85,110.12 206.35,283.74 25.45,179.3 25.94,5.67 		"/>
-                        </g>
-                    </g>
-                    <g id="downEnvelope">
-                        <g>
-                            <path class="st4" d="M224.51,365.42l0.19,0.33c-0.12,0.13-0.22,0.27-0.31,0.44c-0.01,0.01-0.01,0.03-0.01,0.04
-                                c-0.1,0.21-0.19,0.44-0.24,0.7c-0.41,0.31-0.81,0.62-1.22,0.93l6.34-3.69c0.4-0.31,0.81-0.62,1.22-0.93l0,0c0,0,0,0,0,0
-                                c0.06-0.26,0.14-0.49,0.24-0.7c0.09-0.18,0.2-0.35,0.32-0.49l-0.19-0.33L224.51,365.42z"/>
-                            <path class="st4" d="M231.74,221c0-0.13-0.03-0.26-0.03-0.38c-0.02-0.25-0.04-0.49-0.07-0.74c-0.02-0.19-0.06-0.39-0.09-0.59
-                                c-0.04-0.25-0.09-0.5-0.15-0.75c-0.02-0.1-0.03-0.19-0.06-0.28c-0.04-0.15-0.08-0.3-0.13-0.44c-0.03-0.11-0.06-0.23-0.1-0.34
-                                c-0.12-0.39-0.24-0.77-0.39-1.16l-6.34,3.69c0.15,0.38,0.27,0.77,0.39,1.16c0.03,0.11,0.07,0.23,0.1,0.34
-                                c0.07,0.24,0.13,0.49,0.18,0.73c0.06,0.25,0.11,0.5,0.15,0.75c0.03,0.2,0.07,0.39,0.09,0.58c0.03,0.25,0.05,0.5,0.07,0.74
-                                c0.02,0.26,0.04,0.52,0.04,0.78l-0.39,137.45c0,0.28-0.01,0.56-0.04,0.82c-0.01,0.09-0.02,0.17-0.03,0.25
-                                c-0.02,0.17-0.04,0.35-0.07,0.51c-0.03,0.16-0.07,0.31-0.11,0.47c-0.02,0.07-0.03,0.15-0.05,0.21c-0.06,0.22-0.13,0.43-0.21,0.62
-                                l6.34-3.69c0.08-0.2,0.15-0.41,0.21-0.62c0.02-0.07,0.03-0.15,0.05-0.22c0.04-0.14,0.07-0.28,0.1-0.43c0-0.01,0-0.02,0-0.02
-                                c0.03-0.16,0.05-0.34,0.07-0.51c0.01-0.08,0.03-0.16,0.03-0.25c0.02-0.26,0.04-0.54,0.04-0.82l0.39-137.45
-                                C231.75,221.26,231.74,221.13,231.74,221z"/>
-                        </g>
-                        <g>
-                            <path class="st5" d="M3.69,92.58c-0.66,0.95-1.04,2.26-1.04,3.9L2.26,233.92c0,1.39,0.26,2.86,0.74,4.31l63.56-36.76L3.69,92.58z"
-                                />
-                            <path class="st5" d="M70.08,204.65L4.69,241.91c1.42,2.4,3.36,4.48,5.49,5.71l206.87,119.44c2.18,1.26,4.16,1.39,5.6,0.59
-                                l-64.56-112.19L70.08,204.65z"/>
-                            <path class="st5" d="M224.39,220l-62.92,35.86l63.04,109.57c0.32-0.8,0.5-1.77,0.51-2.89l0.39-137.45
-                                C225.41,223.45,225.04,221.7,224.39,220z"/>
-                        </g>
-                        <path d="M161.46,255.86l62.96-35.88l6.34-3.69c-0.11-0.25-0.2-0.5-0.27-0.75c-0.02-0.07-0.04-0.15-0.06-0.22
-                            c-0.06-0.23-0.12-0.46-0.17-0.69c0,0,0,0,0,0c-0.25-0.34-0.46-0.69-0.65-1.07c-0.19-0.3-0.36-0.62-0.5-0.94
-                            c-0.08-0.11-0.17-0.23-0.24-0.34l-0.19,0.11l-0.02,0.01l0.02-0.01c-0.07-0.11-0.15-0.21-0.22-0.32l-61.86,35.69l-0.04,0.02
-                            l-0.98,0.56l-90.09-52.02L13.54,89.04l-1.03-1.79l-0.17-0.29c-0.28,0.09-0.62,0.07-0.99-0.01l-6.34,3.69
-                            c-0.12,0.25-0.28,0.46-0.46,0.62l-0.54,0.31c-0.12,0.28-0.29,0.52-0.5,0.7l0.19,0.32h0l62.87,108.89L9.34,234.55l-0.3,0.17
-                            l-6.34,3.69c0.12,0.38,0.2,0.75,0.25,1.12c0.05,0.15,0.09,0.29,0.13,0.43c0.5,0.51,0.92,1.09,1.24,1.7
-                            c0.12,0.08,0.24,0.17,0.36,0.26c0.13,0.1,0.26,0.21,0.38,0.32l65.01-37.58l37.19,21.47l50.81,29.33l64.56,112.19l0.27,0.22
-                            c0.4-0.31,0.81-0.62,1.22-0.93c0.1-0.48,0.29-0.9,0.57-1.19l-0.19-0.33L161.46,255.86z"/>
-                    </g>
-                    </svg>
                 </div>
-            </div>
-            <div class="container__media">
+            
+            <!-- <div class="container__media">
                 <ul class="container__media-list">
                     <li class="container__media-li"></li>
                     <li class="container__media-li"></li>
                     <li class="container__media-li"></li>
                 </ul>
-            </div>
+            </div> -->
         </section>
     </main>
     
