@@ -1,13 +1,12 @@
 .about {
     padding-top: 9em;
     position: absolute;
-    display: none;
+    display: flex;
     flex-direction: column;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0;
     color: $creame;
     background-color: $bgc-color;
     pointer-events: none;
@@ -176,4 +175,3 @@
 
 @import './small';
 @import './desktop';
-@import './desktopxl';

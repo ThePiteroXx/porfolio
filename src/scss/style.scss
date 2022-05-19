@@ -35,7 +35,6 @@ h3, h4 {
     font-family: 'Playfair Display', serif;
 }
 
-
 .heading {
     position: relative;
     font-family: 'Calibre';
@@ -228,10 +227,7 @@ main {
 @import './work/style.scss';
 @import './contact/style.scss';
 
-.is-visible {
-    display: flex;
-    pointer-events: all;
-}
+
 @media screen and (min-width: 656px) {
     .heading {
         font-size: 4.5rem;
@@ -260,7 +256,7 @@ main {
             height: 100%;
             width: 100%;
             list-style-type: none;
-
+            
             
             li {
                 margin: 0 1.3em 4em;
@@ -269,11 +265,11 @@ main {
                 font-size: 1.7rem;
                 text-align: center;
                 transition: color .3s;
-
+                
                 &.active .svg-inline--fa{
                     opacity: 1;
                 }
-
+                
                 a {
                     display: flex;
                     flex-direction: column;
@@ -298,7 +294,7 @@ main {
         
         }
     }
-
+    
     .heading {
         font-size: 6rem;
     }
@@ -315,4 +311,16 @@ main {
             }
         }
     }
+}
+
+.is-visible {
+    pointer-events: all;
+}
+
+.success {
+    color: $success;
+}
+
+.error {
+    color: $error;
 }
