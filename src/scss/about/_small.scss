@@ -54,19 +54,12 @@
 
             &__skill {
                 margin-top: 2em;
-                display: grid;
-                grid-template-columns: 1fr 1fr;
+                display: flex;
                 max-width: 1000px;
 
                 &-container {
                     justify-self: center;
                     width: 80%;
-                }
-
-                &-list {
-                    li{
-                        grid-template-columns: 0 1fr 1.5fr;
-                    }
                 }
             }
         }

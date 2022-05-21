@@ -101,16 +101,19 @@
             }
 
             &-list {
-                margin: 0;
+                margin:3em auto;
                 padding: 0;
+                display: flex;
+                gap: 1.5em;
+                flex-direction: column;
+                flex-wrap: wrap;
+                max-width: 350px;
+                max-height: 170px;
                 list-style: none;
-                display: grid;
-                gap: 0.4rem;
 
                 li {
-                    display: grid;
-                    grid-template-columns: 0 1fr 1.5fr;
-                    gap: 1.5em;
+                    display: flex;
+                    gap: 1.2em;
                     align-items: center;
                     font-size: 1.5rem;
                     font-family: "Calibre";
@@ -123,48 +126,6 @@
                         border: 1px solid $cyan;
                         border-radius: 50%;
                     }
-
-                    .strip-of-level {
-                        margin-top: -0.25em;
-                        position: relative;
-                        width: 100%;
-                        height: 5px;
-                        background-color: $green;
-
-                        &::before {
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            content: '';
-                            height: 100%;
-                            background-color: $cyan;
-                        }
-
-                        &--html::before {
-                            width: 85%;
-                        }
-
-                        &--css::before {
-                            width: 70%;
-                        }
-
-                        &--js::before {
-                            width: 50%;
-                        }
-
-                        &--threejs::before {
-                            width: 30%;
-                        }
-
-                        &--bundler::before {
-                            width: 40%;
-                        }
-
-                        &--blender::before {
-                            width: 15%;
-                        }
-                    }
-
                 }
             }
              
