@@ -85,6 +85,37 @@ module.exports = {
                 }
             },
 
+            // Models
+            {
+                test: /\.(glb|gltf|fbx|obj)$/,
+                use:
+                [
+                    {
+                        loader: 'file-loader',
+                        options:
+                        {
+                            outputPath: 'assets/models/'
+                        }
+                    }
+                ]
+            },
+
+            
+            // MP4
+            {
+                test: /\.(mp4)$/,
+                use:
+                [
+                    {
+                        loader: 'file-loader',
+                        options:
+                        {
+                            outputPath: 'assets/media/'
+                        }
+                    }
+                ]
+            },
+
             // Shaders
             {
                 test: /\.(glsl|vs|fs|vert|frag)$/,
