@@ -30,6 +30,10 @@
         &__content {
             &__skill {
                 flex-direction: row;
+
+                &-list {
+                    max-width: 350px;
+                }
             }
         }
     }
