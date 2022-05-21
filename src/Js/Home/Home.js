@@ -9,7 +9,6 @@ import Renderer from './Renderer.js'
 import Camera from './Camera.js'
 import World from './World.js'
 import Navigation from './Navigation.js'
-import Content from './Content.js'
 
 
 export default class Home
@@ -42,7 +41,6 @@ export default class Home
         this.renderer = new Renderer()
         this.world = new World()
         this.navigation = new Navigation()
-        this.setContent()
         
         this.sizes.on('resize', () =>
         {
