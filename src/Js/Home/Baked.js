@@ -34,6 +34,7 @@ export default class Baked
         this.setModel()
         this.setMouse()
         this.setRaycaster()
+        this.addLampEventListeners()
     }
 
     setModel()
@@ -153,11 +154,15 @@ export default class Baked
                 document.querySelector('.fa-lightbulb').classList.remove('active')
 
         }
-
+    }
+    
+    addLampEventListeners() {
         this.targetElement.addEventListener('click', () => { if(this.currentIntersect) this.turnLight() })
+        document.querySelector('#btnLamp').addEventListener('click', () => {
+            document.querySelector('.fa-lightbulb').classList.toggle('active')
+            this.turnLight()
+        })
         // this.targetElement.addEventListener('touchstart', turnLight, {passive: false})
-
-
     }
 
     resize() {
