@@ -14,6 +14,33 @@ export default class Photos
         this.config = this.work.config
         this.resources = this.work.resources
 
+        this.myWorks = [
+            {
+                id: 1,
+                name: 'flyo',
+                category: 'web',
+                textureImg: this.resources.items.flyo
+            },
+            {
+                id: 2,
+                name: 'cook and boost',
+                category: 'web',
+                textureImg: this.resources.items.cook
+            },
+            {
+                id: 3,
+                name: 'space',
+                category: 'game',
+                textureImg: this.resources.items.space
+            },
+            {
+                id: 4,
+                name: 'tetris',
+                category: 'game',
+                textureImg: this.resources.items.tetris
+            }
+        ]
+
         this.sizes = {
             mobile: 700,
             desktop: 1400
@@ -40,13 +67,10 @@ export default class Photos
 
     setImages() 
     {
-        this.createImage('flyo', 'web', 1, this.resources.items.flyo)
-        this.createImage('cook and boost', 'web', 2, this.resources.items.cook)
-        this.createImage('space', 'game', 3, this.resources.items.space)
-        this.createImage('tetris', 'game', 4, this.resources.items.tetris)
+        this.myWorks.forEach((work) => this.createImage({...work}))
     }
 
-    createImage(name, category, setNumber, textureImg)
+    createImage({id, name, category, textureImg, href})
     {
         //create image webgl
         const geometry = new THREE.PlaneBufferGeometry(1, 1, 1, 1)
@@ -66,7 +90,9 @@ export default class Photos
         //create img dom 
         const container = document.querySelector('.work__container')
         const imgSet = document.createElement('div')
-        const imgIn = document.createElement('div')
+        const imgIn = document.createElement('a')
+        imgIn.href = href
+        imgIn.rel = "noopener"
         const title = document.createElement('span')
         const description = document.createElement('span')
         const number = document.createElement('span')
@@ -79,7 +105,7 @@ export default class Photos
         
         title.textContent = name
         description.textContent = category
-        number.textContent =`#${setNumber}`
+        number.textContent =`#${id}`
         imgIn.style.width = `${this.imageWidth}px`
         imgIn.style.height = `${this.imageHeight}px`
         
