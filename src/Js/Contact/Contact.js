@@ -1,7 +1,7 @@
 import emailjs from '@emailjs/browser'
 
 emailjs.init(process.env.PUBLIC_EMAIL_KEY)
-console.log(proccess.env.PUBLIC_EMAIL_KEY)
+console.log(process.env.PUBLIC_EMAIL_KEY, 'test')
 
 const form =  document.querySelector('#contact-form')
 const formButton = document.querySelector('#contact-btn')
@@ -29,7 +29,7 @@ export default class Contact {
 
     this.setLoadingButton(true)
     // send message to email
-    console.log(process.env.EMAIL_SERVICE)
+    console.log(process.env.EMAIL_SERVICE, 'test2')
     emailjs.sendForm(process.env.EMAIL_SERVICE, process.env.EMAIL_TEMPLATE, form).then(
       (response) => {
         if (response.status === 200) {
