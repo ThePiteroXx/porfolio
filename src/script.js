@@ -1,5 +1,5 @@
-import { gsap } from 'gsap'
 import './scss/style.scss'
+import { gsap } from 'gsap'
 import LoadingScreen from './Js/LoadingScreen/LoadingScreen.js'
 import Home from './Js/Home/Home.js'
 import About from './Js/About/About.js'
@@ -13,30 +13,25 @@ import '@fortawesome/fontawesome-free/js/brands'
 
 const charming = require("charming")
 
-const loadingScreen = new LoadingScreen()
-loadingScreen.init()
+new LoadingScreen()
+new Contact()
+new Home(document.querySelector('.canvas-home'))
+new About(document.querySelector('.canvas-about'))
+new Work(document.querySelector('.canvas-work'))
 
-const contact = new Contact()
-const homeCanvas = new Home({
-    targetElement: document.querySelector('.canvas-home')
-})
-
-const skillsCanvas = new About(document.querySelector('.canvas-about'))
-
-const workCanvas = new Work(document.querySelector('.canvas-work'))
-
-let $allNavMobileLink;
 let $navHomeDesktop; 
 let $navAboutDesktop;
 let $navWorkDesktop; 
 let $navContactDesktop;
 
-let $allNavLinks;
-let $allNavDesktopLink;
+let $allNavMobileLink;
 let $navHomeMobile;
 let $navAboutMobile; 
 let $navWorkMobile;
 let $navContactMobile;
+
+let $allLinks;
+let $allNavLinks;
 
 let $navBtn;
 let $navMobile;
@@ -45,10 +40,6 @@ let $main;
 let $sections;
 let $headers;
 let $descriptionHome;
-
-let $home;
-let $about;
-let $work;
 
 let $tl;
 
@@ -59,14 +50,15 @@ const prepareDOMElements = () =>
     $navAboutDesktop = document.querySelector('#navAboutDesktop')
     $navWorkDesktop = document.querySelector('#navWorkDesktop')
     $navContactDesktop = document.querySelector('#navContactDesktop')
-    $allNavMobileLink = [...document.querySelectorAll('.nav-mobile-list li')]
     
     $navHomeMobile = document.querySelector('#navHomeMobile')
     $navAboutMobile = document.querySelector('#navAboutMobile')
     $navWorkMobile = document.querySelector('#navWorkMobile')
     $navContactMobile = document.querySelector('#navContactMobile')
-    $allNavDesktopLink = [...document.querySelectorAll('.nav-desktop-list li')]
+    $allNavMobileLink = [...document.querySelectorAll('.nav-mobile-list li')]
+
     $allNavLinks = [...document.querySelectorAll('.navLi')]
+    $allLinks = [...document.querySelectorAll('[data-href]')]
     
     $navBtn = document.querySelector('#navBtn')
     $navMobile = document.querySelector('#navMobile')
@@ -75,10 +67,6 @@ const prepareDOMElements = () =>
     $sections = [...$main.children]
     $headers = [...document.querySelectorAll('[data-heading]')]
     $descriptionHome = document.querySelector('.home__description')
-
-    $home = document.querySelector('.home')
-    $about = document.querySelector('.about')
-    $work = document.querySelector('.work')
     
     $tl = gsap.timeline()
 }
@@ -111,22 +99,19 @@ const prepareDOMEvents = () =>
     // Change pages with navigation
 
     $allNavLinks.forEach(link => {
-        
+        const linkPathname = link.firstChild.hash.slice(1)
         link.addEventListener('click', () => {
             const isActive = link.classList.contains('active')
-            // mobile
-            if(link == $navHomeMobile && !isActive) changePageScene('home')
-            if(link == $navAboutMobile && !isActive) changePageScene('about')
-            if(link == $navWorkMobile && !isActive) changePageScene('work')
-            if(link == $navContactMobile && !isActive) changePageScene('contact')
-
-            // dektop
-            if(link == $navHomeDesktop && !isActive) changePageScene('home')
-            if(link == $navAboutDesktop && !isActive) changePageScene('about')
-            if(link == $navWorkDesktop && !isActive) changePageScene('work')
-            if(link == $navContactDesktop && !isActive) changePageScene('contact')
+            if(!isActive) changePageScene(linkPathname)
         })
         
+    })
+    
+    // Change pages with all link (<a href="" />)
+    $allLinks.forEach(link => {
+        console.log(link)
+        const linkPathname = link.dataset.href
+        link.addEventListener('click', () => changePageScene(linkPathname))
     })
 }
 const main = () => {
@@ -138,7 +123,7 @@ const main = () => {
 */
 
 const checkHashLocation = () => {
-    const setClassVisible = (nameClass) => {
+    const setVisibleSection = (nameClass) => {
         $sections.forEach(element => {
             if(element.classList.contains(nameClass))
             {
@@ -160,25 +145,29 @@ const checkHashLocation = () => {
     {
         $main.classList.add('home-is-active')
         $navHomeDesktop.classList.add('active')
-        setClassVisible('home')
+        $navHomeMobile.classList.add('active')
+        setVisibleSection('home')
     }
     if(hash === '#about')
     {
      $main.classList.add('about-is-active')
      $navAboutDesktop.classList.add('active')
-     setClassVisible('about')
+     $navAboutMobile.classList.add('active')
+     setVisibleSection('about')
     }
     if(hash === '#work')
     {
         $main.classList.add('work-is-active')
         $navWorkDesktop.classList.add('active')
-        setClassVisible('work')
+        $navWorkMobile.classList.add('active')
+        setVisibleSection('work')
     }
     if(hash === '#contact')
     {
      $main.classList.add('contact-is-active')
      $navContactDesktop.classList.add('active')
-     setClassVisible('contact')
+     $navContactMobile.classList.add('active')
+     setVisibleSection('contact')
     }
 }
 
@@ -187,13 +176,13 @@ const changePageScene = (idScene) => {
     const previousPageClassName = $main.classList[0].replace('-is-active', '')
     const previousPage = window[previousPageClassName]
    
-    $main.className = ' '
+    $main.className = ' ' // delete main classes
 
     const foundSection = $sections.find(section => section.attributes.id.value === idScene)
 
     if(foundSection) {
-        // remove classes from nav links
-        $allNavDesktopLink.forEach(element => element.className = '')
+        // remove active class from nav links
+        $allNavLinks.forEach(element => element.classList.remove('active'))
         
         // set transition
         $tl
