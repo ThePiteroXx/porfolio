@@ -25,7 +25,7 @@
     <nav>
         <div class="nav-mobile" id="navMobile">
             <ul class="nav-mobile-list">
-                <li id="navHomeMobile" class="navLi"><a href="#"><i class="fas fa-home"></i>Home</a></li>
+                <li id="navHomeMobile" class="navLi"><a href="#home"><i class="fas fa-home"></i>Home</a></li>
                 <li id="navAboutMobile" class="navLi"><a href="#about"><i class="fas fa-user" style="margin-right: 21px;"></i>About Me</a></li>
                 <li id="navWorkMobile" class="navLi"><a href="#work"><i class="fas fa-award" style="margin-right: 23.5px;"></i>Work</a></li>
                 <li id="navContactMobile" class="navLi"><a href="#contact"><i class="fas fa-envelope" style="margin-right: 18.5px;"></i>Contact</a></li>
@@ -34,7 +34,7 @@
 
         <div class="nav-desktop">
             <ul class="nav-desktop-list">
-                <li id="navHomeDesktop" class="navLi"><a href="#"><i class="fas fa-home"></i>Home</a></li>
+                <li id="navHomeDesktop" class="navLi"><a href="#home"><i class="fas fa-home"></i>Home</a></li>
                 <li id="navAboutDesktop" class="navLi"><a href="#about"><i class="fas fa-user"></i>About Me</a></li>
                 <li id="navWorkDesktop" class="navLi"><a href="#work"><i class="fas fa-award"></i>Work</a></li>
                 <li id="navContactDesktop" class="navLi"><a href="#contact"><i class="fas fa-envelope"></i>Contact</a></li>
@@ -49,7 +49,7 @@
             <div class="home__content">
                 <h1 class="home__heading" data-heading="home">peter skubisz</h1>
                 <p class="home__description">Front-end developer</p>
-                <a href="#" class="home__btn">About Me</a>
+                <a href="#about" class="home__btn" data-href="about">About Me</a>
             </div>
 
             <canvas class="canvas-home"></canvas>
@@ -62,8 +62,8 @@
         
                 <div class="home__media__socials">
                     <a href="https://github.com/ThePiteroXx" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
-                    <i class="fab fa-instagram"></i>
-                    <i class="fab fa-linkedin"></i>
+                    <a href="https://www.instagram.com/peterskubisz/" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/piotr-skubisz-89b89623b/" target="_blank" rel="noopener"><i class="fab fa-github"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div> 
 
@@ -80,7 +80,7 @@
                 </div>
                 <p class="about__content__text" data-description="about">My programming adventure started from february 2021 year. I learn new things quickly and try to do everything precisely. I improve my skills every day and I'm having a lot of fun with it. I'm very motivated to learn more and gain experience.</p>
                 <p class="about__content__text" data-description="about">In my spare time from coding, I have been training in the gym for about 5 years. I am a calm, patient person who strives to achieve its goals.</p>
-                <p class="about__content__text" data-description="about">If you wanna know more about me write me <a href="#contact">contact</a></p>
+                <p class="about__content__text" data-description="about">If you wanna know more about me write me <a href="#contact" data-href="contact">contact</a></p>
                 <p class="about__content__text" data-description="about">Here are some of the technologies I have worked with up to this moment:</p>
 
                 <div class="about__content__skill" data-description="about">
@@ -94,7 +94,7 @@
                             <li>React</li>
                             <li>Redux</li>
                             <li>Firebase</li>
-                            <li>Webpack / Gulp</li>
+                            <li>Webpack</li>
                         </ul>
                     </div>
                     <div class="about__content__skill-container" data-description="about">
@@ -124,8 +124,8 @@
             
             <div class="contact__container contact__container--left">
                     <h2 class="contact__heading" data-heading="contact">Do you have any question?</h2>
-                    <p class="contact__text">I am open to various job offers and projects. If you have any questions and requests - Fill out the form and write message to me.</p>
-                    <form class="contact__form" id="contact-form">
+                    <p class="contact__text" data-description="contact">I am open to various job offers and projects. If you have any questions and requests - Fill out the form and write message to me.</p>
+                    <form class="contact__form" id="contact-form" data-description="contact">
                         <div class="contact__form__box">
                             <input type="text" name="from_name" class="contact__input" id="contact-name" placeholder=" ">
                             <label class="contact__label" for="contact-name">First name</label>
@@ -143,15 +143,9 @@
                     </form>
                 </div>
                 <div class="contact__container contact__container--right">
+                    <div class="contact__container__mask"></div>
                 </div>
             
-            <!-- <div class="container__media">
-                <ul class="container__media-list">
-                    <li class="container__media-li"></li>
-                    <li class="container__media-li"></li>
-                    <li class="container__media-li"></li>
-                </ul>
-            </div> -->
         </section>
     </main>
     
