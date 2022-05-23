@@ -109,7 +109,6 @@ const prepareDOMEvents = () =>
     
     // Change pages with all link (<a href="" />)
     $allLinks.forEach(link => {
-        console.log(link)
         const linkPathname = link.dataset.href
         link.addEventListener('click', () => changePageScene(linkPathname))
     })
