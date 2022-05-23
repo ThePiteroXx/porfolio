@@ -91,13 +91,13 @@ export default class Contact {
 
     if (!nameValue.length) 
     {
-      formName.setCustomValidity('Empty field')
-      return { message: 'Fields cannot be empty.', status: 'error' }
+      formName.setCustomValidity('Field is required')
+      return { message: 'Name field is required.', status: 'error' }
     } 
     else if (!emailValue.length) 
     {
-      formEmail.setCustomValidity('Empty field')
-      return { message: 'Fields cannot be empty.', status: 'error' }
+      formEmail.setCustomValidity('Field is required')
+      return { message: 'Email field is required.', status: 'error' }
     } 
     else if (!regexEmail.test(emailValue.toLowerCase())) 
     {
@@ -106,8 +106,8 @@ export default class Contact {
     } 
     else if (!messageValue.length) 
     {
-      formMessage.setCustomValidity('Empty field')
-      return { message: 'Fields cannot be empty.', status: 'error' }
+      formMessage.setCustomValidity('Field is required')
+      return { message: 'Message field is required.', status: 'error' }
     } 
     else 
     {
