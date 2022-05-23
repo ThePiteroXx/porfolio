@@ -15,7 +15,7 @@ export default class Home
 {
     static instance
 
-    constructor(_options)
+    constructor(targetElement)
     {
         if(Home.instance)
         {
@@ -24,7 +24,7 @@ export default class Home
         Home.instance = this
 
         // Options
-        this.targetElement = _options.targetElement
+        this.targetElement = targetElement
         if(!this.targetElement)
         {
             console.warn('Missing \'targetElement\' property')
