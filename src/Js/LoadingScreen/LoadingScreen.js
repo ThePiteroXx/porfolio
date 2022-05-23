@@ -7,6 +7,7 @@ export default class LoadingScreen
         this.resources = new Resources()
         this.tl = gsap.timeline()
         this.tl.addLabel('begin')
+        this.init()
     }
 
 
