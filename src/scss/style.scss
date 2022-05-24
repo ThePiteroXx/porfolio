@@ -241,13 +241,13 @@ main {
 @import './contact/style.scss';
 
 
-@media screen and (min-width: 656px) {
+@media (min-width: 656px) {
     .heading {
         font-size: 4.5rem;
     }
 }
 
-@media screen and (min-width: 1400px) {
+@media (min-width: 1400px) {
     .nav-hamburger, .nav-mobile {
         display: none;
     }
@@ -313,7 +313,7 @@ main {
     }
 }
 
-@media screen and (min-width: 2000px) {
+@media (min-width: 2000px) {
     .heading {
         font-size: 5vh;
     }
