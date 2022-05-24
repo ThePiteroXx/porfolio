@@ -6,6 +6,7 @@
     display: block;
     pointer-events: none;
     overflow: hidden;
+    opacity: 0;
 
     .touch-action-none
     {
@@ -79,7 +80,7 @@
     }
 }
 
-@media (min-width: 700px)
+@media (min-width: 700px) and (orientation:landscape)
 {
     .work{
         &__container {
