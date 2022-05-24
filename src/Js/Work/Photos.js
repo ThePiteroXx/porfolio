@@ -315,7 +315,7 @@ export default class Photos
 
         }
         // Add limit scroll
-        this.lastImg = keys.at(-1)
+        this.lastImg = keys[keys.length - 1]
         const distanceTop = (this.images[this.lastImg].matrix.f - window.innerHeight) + this.imageHeight
         this.scroll.limit = distanceTop
         
