@@ -1,6 +1,5 @@
 import * as THREE from 'three'
 
-import Stats from '../Utils/Stats.js'
 import Time from '../Utils/Time.js'
 
 import Resources from '../Resources.js'
@@ -36,7 +35,6 @@ export default class Work
         this.sizes = new Sizes()
         this.time = new Time()
         this.setConfig()
-        this.setStats()
         this.resources = new Resources()
         this.scene = new THREE.Scene()
         this.camera = new Camera()
@@ -63,15 +61,6 @@ export default class Work
 
         this.config.scrollRender = false
         
-        this.config.debug = this.config.width > 420
-    }
-
-    setStats()
-    {
-        if(this.config.debug)
-        {
-            this.stats = new Stats(false)
-        }
     }
 
     update()

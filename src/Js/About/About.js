@@ -1,6 +1,5 @@
 import * as THREE from 'three'
 
-import Stats from '../Utils/Stats.js'
 import Time from '../Utils/Time.js'
 
 import Sizes from './Sizes.js'
@@ -35,7 +34,6 @@ export default class About
         this.sizes = new Sizes()
         this.time = new Time()
         this.setConfig()
-        this.setStats()
         this.scene = new THREE.Scene()
         this.setCamera()
         this.renderer = new Renderer()
@@ -60,14 +58,6 @@ export default class About
         this.config.height = this.sizes.height
         
         this.config.debug = this.config.width > 420
-    }
-
-    setStats()
-    {
-        if(this.config.debug)
-        {
-            this.stats = new Stats(false)
-        }
     }
 
     setCamera()
