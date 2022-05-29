@@ -19,6 +19,8 @@ export default [
 
             { name: 'flyo', source: '/assets/flyo.jpg', type: 'texture' },
             { name: 'cook', source: '/assets/cook.jpg', type: 'texture' },
+            { name: 'messup', source: '/assets/messup.jpg', type: 'texture' },
+            { name: 'dietapp', source: '/assets/dietapp.jpg', type: 'texture' },
             { name: 'space', source: '/assets/space.jpg', type: 'texture' },
             { name: 'tetris', source: '/assets/tetris.jpg', type: 'texture' },
         ]

@@ -17,27 +17,38 @@ export default class Photos
         this.myWorks = [
             {
                 id: 1,
-                name: 'flyo',
-                category: 'web',
-                textureImg: this.resources.items.flyo
+                name: 'messup',
+                category: 'app',
+                textureImg: this.resources.items.messup,
+                href: 'https://github.com/ThePiteroXx/MessUp'
             },
             {
                 id: 2,
-                name: 'cook and boost',
-                category: 'web',
-                textureImg: this.resources.items.cook
+                name: 'diet app',
+                category: 'app',
+                textureImg: this.resources.items.dietapp,
+                href: 'https://github.com/ThePiteroXx/diet-app'
             },
             {
                 id: 3,
                 name: 'space',
                 category: 'game',
-                textureImg: this.resources.items.space
+                textureImg: this.resources.items.space,
+                href: 'https://github.com/ThePiteroXx/space-game'
             },
             {
                 id: 4,
-                name: 'tetris',
-                category: 'game',
-                textureImg: this.resources.items.tetris
+                name: 'flyo',
+                category: 'web',
+                textureImg: this.resources.items.flyo,
+                href: 'https://github.com/ThePiteroXx/flyo'
+            },
+            {
+                id: 5,
+                name: 'cook and boost',
+                category: 'web',
+                textureImg: this.resources.items.cook,
+                href: 'https://github.com/ThePiteroXx/projekt1',
             }
         ]
 
@@ -92,6 +103,7 @@ export default class Photos
         const imgSet = document.createElement('div')
         const imgIn = document.createElement('a')
         imgIn.href = href
+        imgIn.target = "_blank"
         imgIn.rel = "noopener"
         const title = document.createElement('span')
         const description = document.createElement('span')
