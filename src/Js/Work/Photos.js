@@ -31,20 +31,27 @@ export default class Photos
             },
             {
                 id: 3,
+                name: 'moviestan',
+                category: 'web',
+                textureImg: this.resources.items.moviestan,
+                href: 'https://github.com/ThePiteroXx/movies-web'
+            },
+            {
+                id: 4,
                 name: 'space',
                 category: 'game',
                 textureImg: this.resources.items.space,
                 href: 'https://github.com/ThePiteroXx/space-game'
             },
             {
-                id: 4,
+                id: 5,
                 name: 'flyo',
                 category: 'web',
                 textureImg: this.resources.items.flyo,
                 href: 'https://github.com/ThePiteroXx/flyo'
             },
             {
-                id: 5,
+                id: 6,
                 name: 'cook and boost',
                 category: 'web',
                 textureImg: this.resources.items.cook,

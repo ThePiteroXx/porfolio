@@ -22,6 +22,7 @@ export default [
             { name: 'messup', source: '/assets/messup.jpg', type: 'texture' },
             { name: 'dietapp', source: '/assets/dietapp.jpg', type: 'texture' },
             { name: 'space', source: '/assets/space.jpg', type: 'texture' },
+            { name: 'moviestan', source: '/assets/moviestan.jpg', type: 'texture' },
         ]
     }   
 ]
