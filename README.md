@@ -3,7 +3,7 @@
 
 
 ## Project Overview 🎉
-My portfolio was mainly created using the three.js library. I created some models using bledner and integrated them into the browser and added animations.
+My portfolio was mainly created using the three.js library. I created some models using blender and integrated them into the browser and added animations.
 
 ## Tech/framework used 🔧
 
