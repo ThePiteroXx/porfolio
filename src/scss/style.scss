@@ -192,36 +192,29 @@ h3, h4 {
         height: 100%;
         list-style-type: none;
         
-        li {
+        .navLi {
             padding: 0.3em 3em;
             margin: 0.3em;
             display: flex;
-            align-items: center;
+            justify-content: center;
             font-family: 'Playfair Display', serif;
             font-size: 2rem;
             border-radius: 10px;
-            transition: color .3s, background-color .3s;
-
+            transition: background-color .3s;
+            
             a {
                 color: $creame;
                 text-decoration: none;
             }
-            
-            .svg-inline--fa {
-                margin-right: 0.8em; 
-
-            }
-
-            .active{
-                color: $grey;
-                background-color: $cyan-lighter;
-            }
 
             &:hover {
-                color: $cyan;
                 background-color: $grey-darker;
                 cursor: pointer;
             }
+        }
+
+        .active{
+            background-color: $grey-darker;
         }
     }
 
@@ -271,38 +264,31 @@ main {
             list-style-type: none;
             
             
-            li {
+            .navLi {
                 margin: 0 1.3em 4em;
                 font-family: 'Source Sans Pro', sans-serif;
                 font-weight: 600;
                 font-size: 1.7rem;
                 text-align: center;
-                transition: color .3s;
-                
-                &.active .svg-inline--fa{
-                    opacity: 1;
-                }
                 
                 a {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                    text-decoration: none;
-                    
                     color: $creame;
+                    text-decoration: none;
+                    transition: color .3s;
 
                     &:hover {
                         cursor: pointer;
                         color: $cyan-power;
                     }
                 }
-
-                .svg-inline--fa {
-                    margin-bottom: 0.2em;
-                    opacity: 0;
-                    transition: opacity .3s;     
+            }
+            .active {
+                a {
+                    color: $cyan;
                 }
-
             }
         
         }

@@ -108,12 +108,12 @@
     
         .fa-lightbulb {
             margin: 0 0.4em;
-            font-size: 3.3rem;
-            color: #ffffff;
+            width: 34px;
+            height: 34px;
+            filter: invert(95%) sepia(5%) saturate(252%) hue-rotate(118deg) brightness(97%) contrast(88%);
     
             &.active {
-                color: #fce76f;
-                filter: drop-shadow(0 0 9px #fce76f);
+                filter: invert(95%) sepia(99%) saturate(742%) hue-rotate(325deg) brightness(105%) contrast(98%) drop-shadow(0 0 9px #fce76f);
             }
     
             &:hover {
@@ -125,13 +125,14 @@
             .fa {
                 
                 &-github, &-instagram, &-linkedin {
-                    margin: 0 0.4em;
-                    font-size: 3.3rem;
-                    color: $creame;
-                    transition: color .3s;
+                    margin: 0 1.2em;
+                    width: 34px;
+                    height: 34px;
+                    filter: invert(95%) sepia(5%) saturate(252%) hue-rotate(118deg) brightness(97%) contrast(88%);
+                    transition: filter .3s;
     
                     &:hover {
-                        color: $cyan;
+                        filter: invert(59%) sepia(28%) saturate(3929%) hue-rotate(138deg) brightness(98%) contrast(103%);
                         cursor: pointer;
                     }
                 }

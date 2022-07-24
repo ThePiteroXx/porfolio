@@ -6,11 +6,6 @@ import About from './Js/About/About.js'
 import Work from './Js/Work/Work.js'
 import Contact from './Js/Contact/Contact.js'
 
-import fontawsome from '@fortawesome/fontawesome-free/js/fontawesome'
-import '@fortawesome/fontawesome-free/js/solid'
-import '@fortawesome/fontawesome-free/js/regular'
-import '@fortawesome/fontawesome-free/js/brands'
-
 import './Js/navigation.js'
 
 new LoadingScreen()
