@@ -71,8 +71,9 @@ export default class Renderer
         /**
          * Effect composer
          */
-        const RenderTargetClass = this.config.pixelRatio >= 2 ? THREE.WebGLRenderTarget : THREE.WebGLMultisampleRenderTarget
-        // const RenderTargetClass = THREE.WebGLRenderTarget
+        // const RenderTargetClass = this.config.pixelRatio >= 2 ? THREE.WebGLRenderTarget : THREE.WebGLMultisampleRenderTarget
+        const RenderTargetClass = THREE.WebGLRenderTarget
+        
         this.renderTarget = new RenderTargetClass(
             this.config.width,
             this.config.height,

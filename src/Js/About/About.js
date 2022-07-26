@@ -44,8 +44,6 @@ export default class About
         {
             this.resize()
         })
-
-        this.update()
     }
     
     setConfig()
@@ -76,11 +74,6 @@ export default class About
 
         if(this.world)
             this.world.update()
-
-        window.requestAnimationFrame(() =>
-        {
-            this.update()
-        })
     }
 
     resize()

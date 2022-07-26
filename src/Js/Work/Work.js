@@ -45,8 +45,6 @@ export default class Work
         {
             this.resize()
         })
-
-        this.update()
     }
 
     
@@ -71,11 +69,6 @@ export default class Work
 
         if(this.world)
             this.world.update()
-
-        window.requestAnimationFrame(() =>
-        {
-            this.update()
-        })
     }
 
     resize()

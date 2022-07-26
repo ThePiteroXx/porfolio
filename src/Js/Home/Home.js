@@ -46,8 +46,6 @@ export default class Home
         {
             this.resize()
         })
-        
-        this.update()
     }
 
     setConfig()
@@ -96,11 +94,6 @@ export default class Home
         if(this.navigation)
             this.navigation.update()
 
-
-        window.requestAnimationFrame(() =>
-        {
-            this.update()
-        })
     }
 
     resize()
