@@ -109,39 +109,9 @@
     }
 
     &__btn {
-        margin-top: 1em;
-        padding: 1em;
-        position: relative;
+        @include button;
         align-self: center;
         width: 80%;
-        background-color: transparent;
-        border: 3px solid $cyan;
-        font-size: 1.5rem;
-        color: $creame;
-        cursor: pointer;
-        transition: color .3s;
-
-        &::before {
-            position: absolute;
-            content: '';
-            top: -1px;
-            left: -1px;
-            height: calc(100% + 2px);
-            width: calc(100% + 2px);
-            background-color: $cyan;
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform .3s;
-            z-index: -1;
-        }
-
-        &:hover{
-            color: #000;
-            &::before {
-                transform: scaleX(1);
-                transform-origin: left;
-            }
-        }
 
         &--disabled {
             cursor: auto;

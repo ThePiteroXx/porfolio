@@ -17,12 +17,10 @@ export default [
             { name: 'painting', source: '/assets/painting.glb', type: 'model'},
             { name: 'icons', source: '/assets/icons-final.glb', type: 'model' },
 
-            { name: 'flyo', source: '/assets/flyo.jpg', type: 'texture' },
-            { name: 'cook', source: '/assets/cook.jpg', type: 'texture' },
             { name: 'messup', source: '/assets/messup.jpg', type: 'texture' },
             { name: 'dietapp', source: '/assets/dietapp.jpg', type: 'texture' },
-            { name: 'space', source: '/assets/space.jpg', type: 'texture' },
             { name: 'moviestan', source: '/assets/moviestan.jpg', type: 'texture' },
+            { name: 'portfolio', source: '/assets/portfolio.jpg', type: 'texture' },
         ]
     }   
 ]

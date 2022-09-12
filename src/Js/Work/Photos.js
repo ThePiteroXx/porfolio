@@ -1,5 +1,7 @@
 import * as THREE from 'three'
 import Work from './Work.js'
+import { setWorkList } from './workList.js'
+import { createModal } from './Modal.js'
 
 import vertexImgShader from './shaders/img/vertex.glsl'
 import fragmentImgShader from './shaders/img/fragment.glsl'
@@ -12,52 +14,8 @@ export default class Photos
         this.scene = this.work.scene
         this.camera = this.work.camera.modes.default.instance
         this.config = this.work.config
-        this.resources = this.work.resources
 
-        this.myWorks = [
-            {
-                id: 1,
-                name: 'messup',
-                category: 'app',
-                textureImg: this.resources.items.messup,
-                href: 'https://github.com/ThePiteroXx/MessUp'
-            },
-            {
-                id: 2,
-                name: 'diet app',
-                category: 'app',
-                textureImg: this.resources.items.dietapp,
-                href: 'https://github.com/ThePiteroXx/diet-app'
-            },
-            {
-                id: 3,
-                name: 'moviestan',
-                category: 'web',
-                textureImg: this.resources.items.moviestan,
-                href: 'https://github.com/ThePiteroXx/movies-web'
-            },
-            {
-                id: 4,
-                name: 'space',
-                category: 'game',
-                textureImg: this.resources.items.space,
-                href: 'https://github.com/ThePiteroXx/space-game'
-            },
-            {
-                id: 5,
-                name: 'flyo',
-                category: 'web',
-                textureImg: this.resources.items.flyo,
-                href: 'https://github.com/ThePiteroXx/flyo'
-            },
-            {
-                id: 6,
-                name: 'cook and boost',
-                category: 'web',
-                textureImg: this.resources.items.cook,
-                href: 'https://github.com/ThePiteroXx/projekt1',
-            }
-        ]
+        this.myWorks = setWorkList(this.work.resources)
 
         this.sizes = {
             mobile: 700,
@@ -85,11 +43,13 @@ export default class Photos
 
     setImages() 
     {
-        this.myWorks.forEach((work) => this.createImage({...work}))
+        this.myWorks.forEach((work) => this.createImage(work))
     }
 
-    createImage({id, name, category, textureImg, href})
+    createImage(props)
     {
+        const {id, name, category, textureImg} = props;
+
         //create image webgl
         const geometry = new THREE.PlaneBufferGeometry(1, 1, 1, 1)
         const material = new THREE.ShaderMaterial({
@@ -108,10 +68,7 @@ export default class Photos
         //create img dom 
         const container = document.querySelector('.work__container')
         const imgSet = document.createElement('div')
-        const imgIn = document.createElement('a')
-        imgIn.href = href
-        imgIn.target = "_blank"
-        imgIn.rel = "noopener"
+        const imgIn = document.createElement('div')
         const title = document.createElement('span')
         const description = document.createElement('span')
         const number = document.createElement('span')
@@ -128,9 +85,7 @@ export default class Photos
         imgIn.style.width = `${this.imageWidth}px`
         imgIn.style.height = `${this.imageHeight}px`
         
-        imgIn.appendChild(title)
-        imgIn.appendChild(description)
-        imgIn.appendChild(number)
+        imgIn.append(title, description, number)
         imgSet.appendChild(imgIn)
         container.appendChild(imgSet)
         
@@ -145,6 +100,11 @@ export default class Photos
         this.images[name].domElement = imgSet
         this.images[name].matrix = matrix
         this.meshes.push(mesh)
+
+        //listeners 
+        imgIn.addEventListener('click', () => {
+            createModal(props)
+        })
     }
 
     putDistanceY(y, boolean)
@@ -177,8 +137,10 @@ export default class Photos
         this.scroll.render = this.config.scrollRender
       
 
-        window.addEventListener('wheel', (e)=>{
-            this.scroll.speed -= e.deltaY * 0.04
+        window.addEventListener('wheel', (e) => {
+            if(!document.querySelector('.modal')){
+                this.scroll.speed -= e.deltaY * 0.04
+            }
         })
 
         //Restart scroll position
@@ -192,19 +154,21 @@ export default class Photos
         {
             start = event.touches[0].pageY
             
-            
         }
         
         const touchMove = (event) =>
         {
-            const offset = start - event.touches[0].pageY
-            this.scroll.speed -= offset * 0.15
-            start = event.touches[0].pageY
+            if(!document.querySelector('.modal'))
+            {
+                const offset = start - event.touches[0].pageY
+                this.scroll.speed -= offset * 0.15
+                start = event.touches[0].pageY
 
-            //set touch-action: none while we scrolling to prevent refreshing page on mobile 
-            const containerWork = document.querySelector('.work__container')
-            if(this.scroll.position < 0) containerWork.classList.add('touch-action-none')
-            else containerWork.classList.remove('touch-action-none')
+                //set touch-action: none while we scrolling to prevent refreshing page on mobile 
+                const containerWork = document.querySelector('.work__container')
+                if(this.scroll.position < 0) containerWork.classList.add('touch-action-none')
+                else containerWork.classList.remove('touch-action-none')
+            }
         }
 
         window.addEventListener("touchstart", touchStart)
@@ -343,7 +307,7 @@ export default class Photos
     update()
     {
         //Add break points scroll
-            
+
         if(this.scroll.position >= -this.scroll.limit && this.scroll.position <= 0)
             this.scroll.position += this.scroll.speed
 
